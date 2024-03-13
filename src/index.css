@@ -1,4 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Roboto+Flex:opsz,wght@8..144,300;8..144,400;8..144,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Lora&family=Noto+Serif:wght@100;200;300;400;500&display=swap');
+
 :root {
+  --main-text-font: 'Roboto Flex', sans-serif;
+  --header-font: 'Noto Serif', Arial;
+  --main-text-color: white;
+  --link-hover-color: #551a8b;
+  --dark-text-color : rgb(16, 16, 16);
+  --main-background-color : #f9f7f7;
+  --secondary-background-color : #fff;
+  --button-background-black : rgb(19, 19, 19);
+  --discount-color-red : rgb(223, 23, 23);
+  --small-font-size: .8em;
+  --medium-font-size: 1em;
+  --big-font-size: 1.2em;
+  --productListCard-background-color: rgb(249,247,247);
+  accent-color: black;
+}
+
+body * {
+  box-sizing: border-box;
+}
+
+/* opći stilovi */
+body {
+  margin: 0 auto;
+  padding: 0;
+  font-family: var(--main-text-font);
+}
+
+
+/* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -65,4 +97,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} */

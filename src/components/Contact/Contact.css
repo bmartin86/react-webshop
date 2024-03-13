@@ -1,0 +1,81 @@
+/* @import url('style.css'); */
+body {
+  background-color: var(--main-background-color);
+}
+
+main {
+  padding-bottom: 10vh;
+}
+
+#contact-main-content {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  padding: 1em;
+}
+
+#contact {
+  padding: 1em;
+  flex: 1;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  overflow-y: auto;
+}
+
+#contact a {
+  color: black;
+}
+
+#contact a:hover {
+  text-decoration: none;
+}
+
+#contact li {
+  margin-top: .9em;
+}
+
+.adresses address {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.contact-social-links {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  transition: transform .33s smooth;
+}
+
+.contact-social-links button {
+  position: relative;
+  background-color: var(--main-background-color);
+  border: none;
+}
+
+.contact-social-links .tooltip {
+  background-color: rgb(49, 49, 49) !important;
+  color: white !important;
+}
+
+.contact-social-links img:hover {
+  transform: scale(1.2);
+  transition: transform .33s smooth;
+  cursor: pointer;
+}
+
+.textarea-div {
+  display: flex;
+}
+
+.textarea-div textarea {
+  box-sizing: border-box;
+  flex: 0 0 100%;
+  padding: 1em;
+}
+
+.aside-blog-wrapper {
+  margin: auto;
+  width: 80vw;
+  padding: 0 3em 1em;
+}
