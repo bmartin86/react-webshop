@@ -1,0 +1,50 @@
+.blog-card-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-img {
+  width: 100%;
+}
+
+.blog-card-title {
+  letter-spacing: .03em;
+  margin: .5em 0;
+  font-size: 1.1em;
+  line-height: 1.3em;
+}
+
+.blog-card-div p {
+  font-size: .9em;
+  line-height: 1.4em;
+  margin: 0;
+  letter-spacing: .01em;
+}
+
+.blog-card-div p,
+.blog-card-div a {
+  color: var(--dark-text-color);
+}
+
+.blog-card-div a {
+  letter-spacing: .15em;
+  line-height: 1.8em;
+  text-decoration: none;
+  position: relative;
+}
+
+.blog-card-div a::after {
+  content: '-'; 
+  display: block; 
+  width: 100%; 
+  height: 1px; 
+  background-color: var(--dark-text-color); 
+  position: absolute; 
+  bottom: -5px; 
+  overflow: hidden;
+}
+
+.blog-a-div {
+  display: inline;
+}
+

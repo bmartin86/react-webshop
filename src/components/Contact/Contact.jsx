@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 function Contact () {
   return (
-    <>
-        <div id="contact-main-content">
+    <main>
+    <div id="contact-main-content">
       <section id="contact">
         <ul>
             <li>
@@ -130,7 +130,7 @@ function Contact () {
         </form>
       </section>
     </div>
-    </>
+    </main>
   )
 }
 export { Contact }

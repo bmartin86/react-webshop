@@ -1,0 +1,142 @@
+/* @import url(style.css); */
+
+main {
+  padding-bottom: 10vh;
+}
+
+.blog-banner-wrapper {
+  height: 100vh;
+}
+
+.blog-banner {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), url("/src/assets/images/wallpaper/01_Newsroom_Header.webp");
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.blog-banner-text {
+  position: absolute;
+  top: 35%;
+  left: 10%;
+  color: var(--main-text-color);
+  font-size: 2.4em;
+  line-height: 1.4em;
+  letter-spacing: 0.03em;
+  font-weight: 700;
+}
+
+.blog-main-flexbox {
+  display: flex;
+  justify-content: space-around;
+  gap: 5vw;
+  padding: 10vh 10vw;
+}
+
+.blog-left-div {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6em;
+}
+
+.blog-left-div h2,
+.blog-right-div h2 {
+  font-size: 1.9em;
+  letter-spacing: .03em;
+}
+
+.blog-article-wrapper article {
+  display: flex;
+}
+
+#paginate {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2em;
+}
+
+#paginate a {
+  text-decoration: none;
+  color: black;
+  font-weight: 700;
+  position: relative;
+}
+
+#paginate div:first-child a::after {
+  content: '-'; 
+  display: block; 
+  width: 100%; 
+  height: 3px; 
+  background-color: black; 
+  position: absolute; 
+  bottom: -6px; 
+  overflow: hidden;
+}
+
+#paginate a:hover {
+  text-decoration: underline;
+}
+
+.blog-right-div {
+  flex: 1;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  overflow-y: auto;
+}
+
+#press-contact-container,
+.profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+#press-contact-container {
+  gap: 1.2em;
+  padding-top: 1.5em;
+}
+
+.profile-card {
+  display: flex;
+}
+
+.profile-photo-box {
+  flex: 1;
+}
+
+.profile-img {
+  width: 80%; 
+}
+
+.profile-info {
+  flex: 2;
+  gap: .4em;
+  font-size: .9em;
+  color: rgb(40, 40, 40);
+}
+
+.profile-contact {
+  margin-top: auto;
+  font-size: 1.1em;
+  padding-bottom: .6em;
+}
+
+.profile-contact a {
+  position: relative;
+  text-decoration: none;
+  color: rgb(40, 40, 40);
+}
+
+.profile-contact a::after {
+  content: '-'; 
+  display: block; 
+  width: 100%; 
+  height: 1px; 
+  background-color: rgb(40, 40, 40); 
+  position: absolute; 
+  bottom: -4px; 
+  overflow: hidden;
+}

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Outlet } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { React, useState } from 'react';
 import { HeaderComponent } from './components/HeaderComponent/HeaderComponent';
 import { MainComponent } from './components/MainComponent/MainComponent';
@@ -9,12 +9,11 @@ import { Contact } from './components/Contact/Contact';
 import { Products } from './components/Products/Products';
 import { Blogs } from './components/Newsroom/Blogs';
 import { BlogDetail } from './components/Newsroom/BlogDetail';
-import { ProductDetail } from "./components/Products/ProductDetail";
 import './App.css';
 import { AppWrapperComponent } from "./components/AppWrapperComponent/AppWrapperComponent";
 
 function App() {
-  //const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0)
 
   return (
     <>
@@ -27,30 +26,12 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
             <Route path="/blogs" element={<Blogs />} />
-            <Route path="/blog-detail" element={<Outlet />} >
-              <Route path="/blog-detail/:id" element={<BlogDetail />} />
-            </Route>  
-            <Route path="/product-detail" element={<Outlet />} >
-              <Route path="/product-detail/:id" element={<ProductDetail />} />
-            </Route>
+            <Route path="/blog-detail" element={<BlogDetail />} />
           </Route>
         </Routes>
-        {/* <Routes>
-          <Route path="/" element={<MainComponent />}>
-            <Route index element={<Page title={"Home Page"} />} />
-            <Route path="/about" element={<Page title={"About"} />} />
-            <Route path="/blogs" element={<Blog />}>
-              <Route path="/blogs/:id" element={<BlogPost />} />
-            </Route>
-            <Route path="/contact" element={<Page title={"Contact"} />} />
-            <Route path="/privacy-policy" element={<Page title={"Privacy Policy"} />} />
-            <Route path="*" element={<Page title={"404 - Page not found"} />} />
-          </Route>
-        </Routes> */}
         <FooterComponent />
       </Router>
     </>
   )
 }
-
 export default App

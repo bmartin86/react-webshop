@@ -1,0 +1,110 @@
+.product-card,
+.product-description {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.product-card {
+  gap: .8em;
+}
+
+.product-image {
+  width: 100%;
+}
+
+.product-card a {
+  text-decoration: none;
+  color: black;
+}
+
+.product-name,
+.product-price,
+.product-category {
+  line-height: 20px;
+  align-self: left;
+}
+
+.product-name,
+.product-price {
+  font-size: 13px;
+}
+
+.product-category {
+  font-size: 11px;
+}
+
+.product-name {
+  letter-spacing: .01em;
+  display: inline;
+}
+
+.product-name:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  color: black;
+}
+
+.product-price {
+  letter-spacing: .04em;
+}
+
+/* heart checkbox */
+.product-img-box {
+  position: relative;
+}
+
+.heart-container {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  height: 28px;
+  width: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heart-container input[type="checkbox"] {
+  height: 16px;
+  width: 16px;
+  background-color: white;
+  position: relative;
+  outline: none;
+  transform: rotate(45deg);
+  -webkit-appearance: none;
+}
+
+.heart-container input[type="checkbox"]::before {
+  position: absolute;
+  content: "";
+  background-color: white;
+  height: 60%;
+  width: 100%;
+  top: -57%;
+  border-radius: 75px 75px 0 0;
+}
+
+.heart-container input[type="checkbox"]::after {
+  position: absolute;
+  content: "";
+  background-color: white;
+  height: 60%;
+  width: 100%;
+  transform: rotate(-90deg);
+  border-radius: 75px 75px 0 0;
+  top: 20%;
+  right: 77%;
+}
+
+.heart-container input[type="checkbox"]:checked,
+.heart-container input:checked[type="checkbox"]::before,
+.heart-container input:checked[type="checkbox"]::after {
+  background-color: #fe0f42;
+}
+
+.heart-container input[type="checkbox"]:hover,
+.heart-container input:hover[type="checkbox"]::before,
+.heart-container input:hover[type="checkbox"]::after {
+  cursor: pointer;
+}

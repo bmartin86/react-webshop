@@ -1,0 +1,44 @@
+/* @import url('style.css'); */
+
+#products-main-wrapper {
+  display: flex;
+  background-color: var(--secondary-background-color);
+  padding: 0 1.6em 10vh;
+}
+
+#asideProducts {
+  flex: 1;
+}
+
+#products-div {
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+}
+
+#products-header h2 {
+  letter-spacing: .05em;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 48px;
+  margin: 0;
+  padding: 32px 0;
+}
+
+#products-header p {
+  font-size: var(--medium-font-size);
+  margin: 0;
+  width: 820px;
+  line-height: 1.5em;
+  padding-top: 1em;
+  padding-bottom: 2em;
+}
+
+#products-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: .3em;
+  grid-row-gap: 1.4em;
+}
+
+
