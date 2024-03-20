@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Outlet } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import { React, useState } from 'react';
 import { HeaderComponent } from './components/HeaderComponent/HeaderComponent';
 import { MainComponent } from './components/MainComponent/MainComponent';
@@ -18,7 +18,7 @@ function App() {
 
   return (
     <>
-      <Router>
+      <BrowserRouter>
         <HeaderComponent />
         <Routes>
           <Route path="/" element={<MainComponent />}>
@@ -48,7 +48,7 @@ function App() {
           </Route>
         </Routes> */}
         <FooterComponent />
-      </Router>
+      </BrowserRouter>
     </>
   )
 }
