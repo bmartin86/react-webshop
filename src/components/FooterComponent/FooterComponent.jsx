@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Icon } from '@iconify/react';
 import './footer.css';
 
 function FooterComponent () {
@@ -14,31 +15,31 @@ function FooterComponent () {
           <div className="footer-social-links">
               <button className="facebook-button">
                   <Link to="https://web.facebook.com/" target="_blank">
-                      <img src="/src/assets/images/icons/facebook-f-white.svg" alt="Facebook icon" />
+                  <Icon icon="eva:facebook-fill" width="1.3rem" height="1.3rem"  style={{color: "white"}} alt="Facebook icon" />
                   </Link>
                   <div className="tooltip">Facebook</div>
               </button>
               <button className="instagram-button">
                   <Link to="https://www.instagram.com/" target="_blank">
-                      <img src="/src/assets/images/icons/instagram-white.svg" alt="Instagram icon" />
+                  <Icon icon="fe:instagram" width="1.3rem" height="1.3rem"  style={{color: "white"}} alt="Instagram icon" />
                   </Link>
                   <div className="tooltip">Instagram</div>
               </button>
               <button className="tiktok-button">
                   <Link to="https://www.tiktok.com" target="_blank">
-                      <img src="/src/assets/images/icons/tiktok-white.svg" alt="TikTok icon" />
+                  <Icon icon="ic:sharp-tiktok" width="1.3rem" height="1.3rem"  style={{color: "white"}} alt="TikTok icon" />
                   </Link>
                   <div className="tooltip">TikTok</div>
               </button>
               <button className="linkedin-button">
                   <Link to="https://www.linkedin.com" target="_blank">
-                      <img src="/src/assets/images/icons/linkedin-in-white.svg" alt="Linkedin icon" />
+                  <Icon icon="ri:linkedin-fill" width="1.3rem" height="1.3rem"  style={{color: "white"}} alt="LinkedIn icon" />
                   </Link>
                   <div className="tooltip">LinkedIn</div>
               </button>
               <button className="twitter-button">
                   <Link to="https://www.twitter.com" target="_blank">
-                      <img src="/src/assets/images/icons/twitter-white.svg" alt="Twitter icon" />
+                  <Icon icon="mdi:twitter" width="1.3rem" height="1.3rem"  style={{color: "white"}} alt="Twitter icon" />
                   </Link>
                   <div className="tooltip">Twitter</div>
               </button>
@@ -48,27 +49,27 @@ function FooterComponent () {
       <div className="footer-middle">
           <nav className="footer-item footer-nav">
               <div>
-                  <Link to="index.html" target="_parent">
+                  <Link to="/" target="_parent">
                       HOME
                   </Link>
               </div>
               <div>
-                  <Link to="products.html" target="_parent">
+                  <Link to="/products" target="_parent">
                       SHOP
                   </Link>
               </div>
               <div>
-                  <Link to="contact.html" target="_parent">
+                  <Link to="/contact" target="_parent">
                       CONTACT
                   </Link>
               </div>
               <div>
-                  <Link to="about.html" target="_parent">
+                  <Link to="/about" target="_parent">
                       ABOUT
                   </Link>
               </div>
               <div>
-                  <Link to="blog.html" target="_parent">
+                  <Link to="/blogs" target="_parent">
                       NEWSROOM
                   </Link>
               </div>
@@ -97,7 +98,7 @@ function FooterComponent () {
       </div>
       
       <div className="signature">
-          <img src="/src/assets/images/icons/copyright-regular-white.svg" alt="Copywright icon" />
+          <img src="/src/assets/images/icons/copyright-regular-black.svg" alt="Copywright icon" />
               2024 FASHION STORE; by Martin Bolanča
       </div>
     </div>

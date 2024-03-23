@@ -51,17 +51,17 @@ main {
 }
 
 .about-hero-image:nth-of-type(1) {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url("/src/assets/images/wallpaper/store-3.webp");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url("https://res.cloudinary.com/dx6qjxz55/image/upload/v1711201670/store-3_nbd5bi.webp");
   background-position-y: bottom;
 }
 
 .about-hero-image:nth-of-type(2){
-  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url("/src/assets/images/wallpaper/store-1.webp"); 
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url("https://res.cloudinary.com/dx6qjxz55/image/upload/v1711201669/store-1_fq5kwv.webp"); 
   background-position: center;
 }
 
 .about-hero-image-3{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url("/src/assets/images/wallpaper/store-2.webp");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url("https://res.cloudinary.com/dx6qjxz55/image/upload/v1711201669/store-2_fj9snw.webp");
   flex: 2;
   background-repeat: no-repeat;
   background-size: cover;
@@ -71,7 +71,7 @@ main {
 }
 
 .about-hero-image-4{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url("/src/assets/images/wallpaper/about-2.avif");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url("https://res.cloudinary.com/dx6qjxz55/image/upload/v1711201666/about-2_lnj4q2.avif");
   flex: 2;
   background-repeat: no-repeat;
   background-size: cover;

@@ -1,6 +1,9 @@
 import './styles/ProductCard.css';
 
 function ProductCard () {
+  fetch('https://dummyjson.com/products')
+  .then(res => res.json())
+  .then(console.log);
   return (
     <div className="product-card">
       <div className="product-img-box">

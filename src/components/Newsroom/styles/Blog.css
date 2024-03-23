@@ -9,7 +9,7 @@ main {
 }
 
 .blog-banner {
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), url("/src/assets/images/wallpaper/01_Newsroom_Header.webp");
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0)), url("https://res.cloudinary.com/dx6qjxz55/image/upload/v1711201665/01_Newsroom_Header_nfx5hb.webp");
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;

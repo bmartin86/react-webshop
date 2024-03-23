@@ -1,5 +1,5 @@
 import { BlogCardLandscape } from "./BlogCardLandscape";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { blogList } from "../../assets/blogList";
 import './styles/Blog.css';
 import { AsideBlogComponent } from "./AsideBlogComponent";
@@ -44,7 +44,7 @@ function Blogs () {
         <article id="press-contact-container">
           <div className="profile-card">
             <div className="profile-photo-box">
-              <img src="/src/assets/images/wallpaper/profile-1.avif" alt="Profile photo" className="profile-img" />
+              <img src="https://res.cloudinary.com/dx6qjxz55/image/upload/v1711201669/profile-1_tsay2e.avif" alt="Profile photo" className="profile-img" />
             </div>
             <div className="profile-info">
               <div className="profile-name">Jane Doe</div>
@@ -59,7 +59,7 @@ function Blogs () {
 
           <div className="profile-card">
             <div className="profile-photo-box">
-              <img src="/src/assets/images/wallpaper/profile-2.avif" alt="Profile photo" className="profile-img" />
+              <img src="https://res.cloudinary.com/dx6qjxz55/image/upload/v1711201669/profile-2_fnjmjf.avif" alt="Profile photo" className="profile-img" />
             </div>
             <div className="profile-info">
               <div className="profile-name">Jane Doe</div>

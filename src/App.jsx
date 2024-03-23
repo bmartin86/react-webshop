@@ -12,6 +12,7 @@ import { BlogDetail } from './components/Newsroom/BlogDetail';
 import { ProductDetail } from "./components/Products/ProductDetail";
 import './App.css';
 import { AppWrapperComponent } from "./components/AppWrapperComponent/AppWrapperComponent";
+import { ProductList } from "./components/Products/ProductList";
 
 function App() {
   //const [count, setCount] = useState(0)
@@ -23,16 +24,19 @@ function App() {
         <Routes>
           <Route path="/" element={<MainComponent />}>
             <Route index element={<HomePage />} />
-            <Route path="/products" element={<Products />} />
+            <Route path="/products" element={<Products />}>
+              <Route index element={<ProductList />} />
+              <Route path="/products/:id" element={<ProductDetail />} />
+            </Route>
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/blog-detail" element={<Outlet />} >
               <Route path="/blog-detail/:id" element={<BlogDetail />} />
             </Route>  
-            <Route path="/product-detail" element={<Outlet />} >
+            {/* <Route path="/product-detail" element={<Outlet />} >
               <Route path="/product-detail/:id" element={<ProductDetail />} />
-            </Route>
+            </Route> */}
           </Route>
         </Routes>
         {/* <Routes>

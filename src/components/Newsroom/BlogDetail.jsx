@@ -1,5 +1,6 @@
-import { Outlet, useParams } from "react-router-dom";
+import { Outlet, useParams, Link } from "react-router-dom";
 import { blogList } from "../../assets/blogList";
+import { Icon } from '@iconify/react';
 import './styles/BlogDetail.css';
 import { useState } from "react";
 
@@ -62,36 +63,36 @@ function BlogDetail () {
           <div>SHARE</div>
           
           <div className="social-links-flexbox">
-            <button className="facebook-button">
-              <a href="https://web.facebook.com/" target="_blank">
-                <img src="/src/assets/images/icons/facebook-f-black.svg" alt="Facebook icon" />
-              </a>
-              <div className="tooltip">Facebook</div>
-            </button>
-            <button className="instagram-button">
-              <a href="https://www.instagram.com/" target="_blank">
-                <img src="/src/assets/images/icons/instagram-black.svg" alt="Instagram icon" />
-              </a>
-              <div className="tooltip">Instagram</div>
-            </button>
-            <button className="tiktok-button">
-              <a href="https://www.tiktok.com" target="_blank">
-                <img src="/src/assets/images/icons/tiktok-black.svg" alt="Tiktok icon" />
-              </a>
-              <div className="tooltip">Tiktok</div>
-            </button>
-            <button className="linkedin-button">
-              <a href="https://www.linkedin.com" target="_blank">
-                <img src="/src/assets/images/icons/linkedin-in-black.svg" alt="Linkedin icon" />
-              </a>
-              <div className="tooltip">LinkedIn</div>
-            </button>
-            <button className="twitter-button">
-              <a href="https://www.twitter.com" target="_blank">
-                <img src="/src/assets/images/icons/twitter-black.svg" alt="Twitter icon" />
-              </a>
-              <div className="tooltip">Twitter</div>
-            </button>
+          <button className="facebook-button">
+                  <Link to="https://web.facebook.com/" target="_blank">
+                  <Icon icon="eva:facebook-fill" width="1.3rem" height="1.3rem"  style={{color: "black"}} alt="Facebook icon" />
+                  </Link>
+                  <div className="tooltip">Facebook</div>
+              </button>
+              <button className="instagram-button">
+                  <Link to="https://www.instagram.com/" target="_blank">
+                  <Icon icon="fe:instagram" width="1.3rem" height="1.3rem"  style={{color: "black"}} alt="Instagram icon" />
+                  </Link>
+                  <div className="tooltip">Instagram</div>
+              </button>
+              <button className="tiktok-button">
+                  <Link to="https://www.tiktok.com" target="_blank">
+                  <Icon icon="ic:sharp-tiktok" width="1.3rem" height="1.3rem"  style={{color: "black"}} alt="TikTok icon" />
+                  </Link>
+                  <div className="tooltip">TikTok</div>
+              </button>
+              <button className="linkedin-button">
+                  <Link to="https://www.linkedin.com" target="_blank">
+                  <Icon icon="ri:linkedin-fill" width="1.3rem" height="1.3rem"  style={{color: "black"}} alt="LinkedIn icon" />
+                  </Link>
+                  <div className="tooltip">LinkedIn</div>
+              </button>
+              <button className="twitter-button">
+                  <Link to="https://www.twitter.com" target="_blank">
+                  <Icon icon="mdi:twitter" width="1.3rem" height="1.3rem"  style={{color: "black"}} alt="Twitter icon" />
+                  </Link>
+                  <div className="tooltip">Twitter</div>
+              </button>
           </div>
         </div>
       </div>
