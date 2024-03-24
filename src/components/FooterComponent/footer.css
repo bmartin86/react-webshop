@@ -55,6 +55,7 @@
 
 .footer-nav a:hover {
   cursor: pointer;
+  text-decoration: underline;
 }
 
 .footer-social-links {

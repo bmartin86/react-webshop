@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import './footer.css';
+import { NavLinks } from '../Nav/NavLinks';
 
 function FooterComponent () {
   return (
@@ -48,31 +49,7 @@ function FooterComponent () {
       
       <div className="footer-middle">
           <nav className="footer-item footer-nav">
-              <div>
-                  <Link to="/" target="_parent">
-                      HOME
-                  </Link>
-              </div>
-              <div>
-                  <Link to="/products" target="_parent">
-                      SHOP
-                  </Link>
-              </div>
-              <div>
-                  <Link to="/contact" target="_parent">
-                      CONTACT
-                  </Link>
-              </div>
-              <div>
-                  <Link to="/about" target="_parent">
-                      ABOUT
-                  </Link>
-              </div>
-              <div>
-                  <Link to="/blogs" target="_parent">
-                      NEWSROOM
-                  </Link>
-              </div>
+            <NavLinks />
           </nav>
           <div className="footer-item contact">
               <address className="bold">FASHION STORE d.o.o.</address>

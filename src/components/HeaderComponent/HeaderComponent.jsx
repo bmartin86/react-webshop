@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import './header.css';
 import '../MainStyles.css';
+import { NavLinks } from '../Nav/NavLinks';
 
 function HeaderComponent () {
   return (
@@ -69,11 +70,7 @@ function HeaderComponent () {
         </div>
     
       <nav className="header-nav">
-        <Link to="/">HOME</Link>
-        <Link to="/products">SHOP</Link>
-        <Link to="/contact">CONTACT</Link>
-        <Link to="/about">ABOUT</Link>
-        <Link to="/blogs">NEWSROOM</Link>
+        <NavLinks />
       </nav>
       </div>
     </div>
