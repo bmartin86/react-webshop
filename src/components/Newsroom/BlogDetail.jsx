@@ -39,12 +39,11 @@ function BlogDetail () {
           <div>
             {blogPost.contentMainTop}
           </div>
-
           <div>
             {blogPost.contentMain}
           </div>
 
-          {/* <!-- važno staviti ovu klasu na pred-predzadnji div radi izgleda stranice/bordera --> */}
+          {/* <!-- klasa za border --> */}
           <div id="border-bottom-div">
             {blogPost.contentMainBottom}
           </div>
@@ -63,7 +62,7 @@ function BlogDetail () {
           <div>SHARE</div>
           
           <div className="social-links-flexbox">
-          <button className="facebook-button">
+              <button className="facebook-button">
                   <Link to="https://web.facebook.com/" target="_blank">
                   <Icon icon="eva:facebook-fill" width="1.3rem" height="1.3rem"  style={{color: "black"}} alt="Facebook icon" />
                   </Link>

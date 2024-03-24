@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { ProductCard } from "./ProductCard";
 import { ProductsSidebar } from "./ProductsSidebar";
+// import { productList } from '../../assets/productList';
 import './styles/Products.css';
 
-function ProductList () {
+function ProductList ({productList}) {
   const [showDropdown, setShowDropdown] = useState(false);
         
   useEffect(() => {
@@ -31,9 +32,15 @@ function ProductList () {
               <h2>All Products</h2>
             </div>
             <div id="products-wrapper">
-              <article className="productCard">
-                <ProductCard />
-              </article>
+            {productList?.map(product => {
+                console.log("Each product in the list =>", product)
+              return(
+                <article className="productCard" key={product.id}>
+                  <ProductCard product={product}/>
+                </article>
+                )}
+              )
+            }
             </div>
           </div>
         </div>

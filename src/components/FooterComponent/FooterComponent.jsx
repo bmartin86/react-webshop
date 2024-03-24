@@ -9,7 +9,7 @@ function FooterComponent () {
       <div className="footer-left">
           <div id="footer-logo">
               <Link to="index.html">
-                  <img src="/src/assets/images/wallpaper/logo.avif" alt="Fashion Store Logo" id="footer-logo-img" />
+                  <img src={'https://res.cloudinary.com/dx6qjxz55/image/upload/v1711201666/logo_nbgkq0.avif'} alt="Fashion Store Logo" id="footer-logo-img" />
               </Link>
           </div> 
           <div className="footer-social-links">
@@ -98,7 +98,7 @@ function FooterComponent () {
       </div>
       
       <div className="signature">
-          <img src="/src/assets/images/icons/copyright-regular-black.svg" alt="Copywright icon" />
+      <Icon icon="ph:copyright" width="1rem" height="1rem" alt="Copywright icon" />
               2024 FASHION STORE; by Martin Bolanča
       </div>
     </div>

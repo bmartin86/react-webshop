@@ -2,8 +2,8 @@ export const productList = [
   {
     id: 1, 
     gender: "woman",
-    category: ["jacket","coat"], 
-    name: "trench coat", 
+    category: [ "New Arrival", "Jacket","Coat"], 
+    name: "Woman Trench Coat", 
     description: "A classic and sophisticated piece, this light brown trenchcoat for women exudes timeless elegance. Crafted from high-quality materials, its tailored silhouette complements any outfit effortlessly. With its versatile hue and refined details such as buttoned epaulettes and a waist belt, this trenchcoat is the perfect combination of style and functionality for any occasion.",
     price: "99,99",
     discout: "12",
@@ -19,11 +19,11 @@ export const productList = [
   {
     id: 2, 
     gender: "woman",
-    category: ["pants"], 
-    name: "wide leg pants", 
+    category: ["Pants"], 
+    name: "Wide Leg Pants", 
     description: "Step into chic comfort with these women's wide-leg pants. Crafted for both style and ease, their flowing silhouette offers a modern twist on classic elegance. Versatile and effortlessly fashionable, these pants are a wardrobe essential for any occasion, offering both sophistication and comfort in every step.",
-    price: "69,99",
-    discout: "0",
+    price: "59,99",
+    discout: "20",
     images: [
       "https://res.cloudinary.com/dx6qjxz55/image/upload/v1711201635/wide-leg-pants_fvoalf.webp",
       "https://res.cloudinary.com/dx6qjxz55/image/upload/v1711201636/wide-leg-pants-3_rhrylq.webp",
@@ -35,9 +35,10 @@ export const productList = [
   {
     id: 3, 
     gender: "man",
-    category: ["jacket"], 
-    name: "jacket", 
+    category: ["New Arrival", "Jacket"], 
+    name: "Men Slim Fit Jacket", 
     description: "Elevate your look with this sleek men's black jacket. Timelessly stylish and versatile, its minimalist design makes it a wardrobe staple for any occasion. Crafted with attention to detail and premium materials, this jacket effortlessly combines sophistication with everyday comfort, ensuring you stand out with understated elegance wherever you go.",
+    price: "69,99",
     discout: "0",
     images: [
       "https://res.cloudinary.com/dx6qjxz55/image/upload/v1711201635/men-jacket4_zqo6m8.webp",

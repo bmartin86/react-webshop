@@ -13,6 +13,7 @@ import { ProductDetail } from "./components/Products/ProductDetail";
 import './App.css';
 import { AppWrapperComponent } from "./components/AppWrapperComponent/AppWrapperComponent";
 import { ProductList } from "./components/Products/ProductList";
+import { productList } from "./assets/productList";
 
 function App() {
   //const [count, setCount] = useState(0)
@@ -25,8 +26,8 @@ function App() {
           <Route path="/" element={<MainComponent />}>
             <Route index element={<HomePage />} />
             <Route path="/products" element={<Products />}>
-              <Route index element={<ProductList />} />
-              <Route path="/products/:id" element={<ProductDetail />} />
+              <Route index element={<ProductList productList={productList}/>} />
+              <Route path="/products/:id" element={<ProductDetail productList={productList} />} />
             </Route>
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<About />} />

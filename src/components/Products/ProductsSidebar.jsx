@@ -1,39 +1,27 @@
 import { useState } from 'react';
 import './styles/ProductsSidebar.css';
+import { Icon } from '@iconify/react';
 
 function ProductsSidebar({ toggleDropdown }) {
   const [categoryDropdown, setCategoryDropdown] = useState(false);
   const [productDropdown, setProductDropdown] = useState(false);
 
-  function toggleCategoryDropdown(event) {
-    event.stopPropagation(); // Stop event propagation
-    setCategoryDropdown(!categoryDropdown);
-    toggleDropdown(true); // Notify parent component that a dropdown is toggled
+  // State variables for icons
+  const [categoryIcon, setCategoryIcon] = useState('ep:arrow-down-bold');
+  const [productIcon, setProductIcon] = useState('ep:arrow-down-bold');
 
-    // Toggle the icon
-    const img = event.currentTarget.querySelector('.myImage');
-    toggleIcon(img);
+  function toggleCategoryDropdown(event) {
+    event.stopPropagation();
+    setCategoryDropdown(!categoryDropdown);
+    setCategoryIcon(categoryDropdown ? 'ep:arrow-down-bold' : 'ep:arrow-up-bold');
+    toggleDropdown(true);
   }
 
   function toggleProductDropdown(event) {
-    event.stopPropagation(); // Stop event propagation
+    event.stopPropagation();
     setProductDropdown(!productDropdown);
-    toggleDropdown(true); // Notify parent component that a dropdown is toggled
-
-    // Toggle the icon
-    const img = event.currentTarget.querySelector('.myImage');
-    toggleIcon(img);
-  }
-
-  // Function to toggle the icon
-  function toggleIcon(img) {
-    if (img.src.includes('angle-down-solid.svg')) {
-      img.src = '/src/assets/images/icons/angle-up-solid.svg';
-      img.alt = 'arrow up icon';
-    } else {
-      img.src = '/src/assets/images/icons/angle-down-solid.svg';
-      img.alt = 'arrow down icon';
-    }
+    setProductIcon(productDropdown ? 'ep:arrow-down-bold' : 'ep:arrow-up-bold');
+    toggleDropdown(true);
   }
   return (
     <div id="products-aside">
@@ -42,7 +30,7 @@ function ProductsSidebar({ toggleDropdown }) {
           <li className="filter-group">
             <button type="button" onClick={toggleCategoryDropdown} className="dropbtn">
               CATEGORY
-              <img className="myImage" src="/src/assets/images/icons/angle-down-solid.svg"  alt="arrow down icon" />
+              <Icon icon={categoryIcon} width="1rem" height="1rem" alt="arrow icon" />
             </button>
             <ul className={`dropdown-content ${categoryDropdown ? 'show' : ''}`}>
               <li>
@@ -68,7 +56,7 @@ function ProductsSidebar({ toggleDropdown }) {
           <li className="filter-group">
             <button type="button" onClick={toggleProductDropdown} className="dropbtn">
               SHOP BY PRODUCT
-              <img className="myImage" src="/src/assets/images/icons/angle-down-solid.svg"  alt="arrow down icon" />
+              <Icon icon={productIcon} width="1rem" height="1rem" alt="arrow icon" />
             </button>
             <ul className={`dropdown-content ${productDropdown ? 'show' : ''}`}>
               <li>

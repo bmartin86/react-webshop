@@ -1,12 +1,35 @@
-import './styles/ProductDetail.css'
+import './styles/ProductDetail.css';
+import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
-function ProductDetail () {
+function ProductDetail ({productList}) {
+  const URLParams = useParams();
+  console.log("ID from URLParams =>",URLParams);
+  console.log("List of products => ", productList);
+
+  const currentProductId = URLParams.id;
+  const currentProduct = productList.filter(item => {
+    return item.id.toString() === currentProductId.toString();
+  })
+  console.log("Current product => ", currentProduct);
+  const [product, setProduct] = useState(currentProduct[0]);
+  console.log("Product => ", product);
+  
   return (
     <main>
     <div className="main-product-wrapper">
 
       <div className="left-div">
-        <div className="img-container">
+            {product.images?.map(image => {
+                console.log("Each image in the list =>", image)
+              return(
+                <div className="img-container"  key={image.id}>
+                  <img src={image} alt="Model wearing product image" />
+                </div>
+                )}
+              )
+            }
+        {/* <div className="img-container">
           <img src="/src/assets/images/products/wide-leg-pants.webp" alt="Model wearing product image" />
         </div>
         <div className="img-container">
@@ -17,7 +40,7 @@ function ProductDetail () {
         </div>
         <div className="img-container">
           <img src="/src/assets/images/products/wide-leg-pants-2.webp" alt="Product image" />
-        </div>
+        </div> */}
       </div>
 
       <div className="right-div">
