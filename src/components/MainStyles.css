@@ -140,12 +140,6 @@ main h2 {
   opacity: 1;
 }
 
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 1em;
-}
-
 #contact-main-content ul,
 .contact ul,
 .legal ul {
