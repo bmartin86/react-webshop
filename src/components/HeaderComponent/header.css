@@ -19,16 +19,23 @@
   flex: 1;
 }
 
+.social-links a {
+  color: white;
+}
+
 .social-links a,
 .search-cart a {
   text-decoration: none;
   margin-right: 1em;
   color: var(--main-text-color);
+}
+
+.social-links button {
   transition: transform .4s smooth;
 }
 
-.social-links a img:hover,
-.search-cart a img:hover {
+.social-links button:hover,
+.search-cart button:hover {
   transform:scale(1.2);
   cursor: pointer;
 }

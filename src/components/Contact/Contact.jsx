@@ -1,5 +1,5 @@
+import { SocialLinks } from '../SocialLinks/SocialLinks';
 import './Contact.css';
-import { Link } from 'react-router-dom';
 
 function Contact () {
   return (
@@ -18,40 +18,7 @@ function Contact () {
 
             <li>
               <div class="contact-social-links">
-                <button class="facebook-button">
-                  <Link to="https://web.facebook.com/" target="_blank">
-                    <img src="/src/assets/images/icons/facebook-f-black.svg" alt="Facebook icon" />
-                  </Link>
-                  <div class="tooltip">Facebook</div>
-                </button>
-
-                <button class="instagram-button">
-                  <Link to="https://www.instagram.com/" target="_blank">
-                    <img src="/src/assets/images/icons/instagram-black.svg" alt="Instagram icon" />
-                  </Link>
-                  <div class="tooltip">Instagram</div>
-                </button>
-
-                <button class="tiktok-button">
-                  <Link to="https://www.tiktok.com" target="_blank">
-                    <img src="/src/assets/images/icons/tiktok-black.svg" alt="Tiktok icon" />
-                  </Link>
-                  <div class="tooltip">TikTok</div>
-                </button>
-
-                <button class="linkedin-button">
-                  <Link to="https://www.linkedin.com" target="_blank">
-                    <img src="/src/assets/images/icons/linkedin-in-black.svg" alt="Linkedin icon" />
-                  </Link>
-                  <div class="tooltip">LinkedIn</div>
-                </button>
-
-                <button class="twitter-button">
-                  <Link to="https://www.twitter.com" target="_blank">
-                    <img src="/src/assets/images/icons/twitter-black.svg" alt="twitter icon" />
-                  </Link>
-                  <div class="tooltip">Twitter</div>
-                </button>
+                <SocialLinks />
             </div>
           </li>
         </ul>

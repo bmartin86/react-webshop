@@ -47,7 +47,6 @@ article h1 {
 
 #timestamp {
   padding: 1em;
-  /* margin: 0 20vw; */
   border-bottom: 1px solid black;
   margin-bottom: 1em;
 }
@@ -114,13 +113,17 @@ article h1 {
 }
 
 .social-links-flexbox a {
-  opacity: 0.4;
-  transform: opacity .3s smooth;
+  color: black;
 }
 
-.social-links-flexbox a:hover {
+.social-links-flexbox button {
+  transition: opacity 0.3s ease, transform 0.4s ease;
+  opacity: 0.4;
+}
+
+.social-links-flexbox button:hover {
   opacity: 0.9;
-  transition: .3s;
+  transform: scale(1.2);
   cursor: pointer;
 }
 

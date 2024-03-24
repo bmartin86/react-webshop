@@ -44,24 +44,24 @@ main {
   display: flex;
   align-items: center;
   gap: 1em;
-  transition: transform .33s smooth;
+  overflow: hidden;
 }
 
 .contact-social-links button {
   position: relative;
   background-color: var(--main-background-color);
   border: none;
+  transition: transform .33s smooth;
+}
+
+.contact-social-links button:hover {
+  transform: scale(1.2);
+  cursor: pointer;
 }
 
 .contact-social-links .tooltip {
   background-color: rgb(49, 49, 49) !important;
   color: white !important;
-}
-
-.contact-social-links img:hover {
-  transform: scale(1.2);
-  transition: transform .33s smooth;
-  cursor: pointer;
 }
 
 .textarea-div {

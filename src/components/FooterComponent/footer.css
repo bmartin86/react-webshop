@@ -64,11 +64,15 @@
   gap: 2em;
 }
 
-.footer-social-links img {
+.footer-social-links a {
+  color: white;
+}
+
+.footer-social-links button {
   transition: transform .4s smooth;
 }
 
-.footer-social-links img:hover{
+.footer-social-links button:hover{
   transform: scale(1.2);
   cursor: pointer;
 }
