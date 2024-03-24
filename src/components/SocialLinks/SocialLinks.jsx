@@ -1,4 +1,3 @@
-import './socialLinks.css';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 function SocialLinks () {
