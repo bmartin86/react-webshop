@@ -63,3 +63,11 @@
 .checkbox-info {
   justify-content: center;
 }
+
+.checkbox label span {
+  display: block; 
+}
+
+.checkbox label span + span {
+  margin-top: 4px; 
+}

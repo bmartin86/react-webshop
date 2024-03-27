@@ -21,22 +21,23 @@ function Newsletter () {
               </select>
             </div>
           </div>
-            <div className="checkbox">
+          <div className="checkbox">
             <div>
-              <input type="checkbox" required name="required-checkbox" />
+              <input type="checkbox" required name="required-checkbox" id="required-checkbox" />
             </div>
             <div>
               <label htmlFor="required-checkbox">
-                I would like to receive information via email on the selected subjects and I agree to the processing of my personal information (consent). <br /> I can withdraw my consent at any time at the end of an email. *
+                <span>I would like to receive information via email on the selected subjects and I agree to the processing of my personal information (consent).</span>
+                <span>I can withdraw my consent at any time at the end of an email. *</span>
               </label>
             </div>
           </div>
           <div className="checkbox">
             <div>
-              <input type="checkbox" name="newsletter" />
+              <input type="checkbox" name="optional-checkbox" id="optional-checkbox" />
             </div>
             <div>
-              <label htmlFor="newsletter">
+              <label htmlFor="optional-checkbox">
                 Send me exclusive offers and discounts tailored to my preferences.             
               </label>
             </div>

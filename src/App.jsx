@@ -14,6 +14,12 @@ import './App.css';
 import { AppWrapperComponent } from "./components/AppWrapperComponent/AppWrapperComponent";
 import { ProductList } from "./components/Products/ProductList";
 import { productList } from "./assets/productList";
+import { CookiePolicy } from "./components/Legal/CookiePolicy";
+import { PrivacyPolicy } from "./components/Legal/PrivacyPolicy";
+import { ReturnPolicy } from "./components/Legal/ReturnPolicy";
+import { ShippingPolicy } from "./components/Legal/ShippingPolicy";
+import { TermsAndConditions } from "./components/Legal/TermsAndConditions";
+import { ErrorPage } from "./components/Pages/ErrorPage";
 
 function App() {
   //const [count, setCount] = useState(0)
@@ -35,9 +41,12 @@ function App() {
             <Route path="/blog-detail" element={<Outlet />} >
               <Route path="/blog-detail/:id" element={<BlogDetail />} />
             </Route>  
-            {/* <Route path="/product-detail" element={<Outlet />} >
-              <Route path="/product-detail/:id" element={<ProductDetail />} />
-            </Route> */}
+            <Route path="/cookie-policy" element={<CookiePolicy />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/return-policy" element={<ReturnPolicy />} />
+            <Route path="/shipping-policy" element={<ShippingPolicy />} />
+            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+            <Route path="*" element={<ErrorPage title={"404 - Page not found"} />} />
           </Route>
         </Routes>
         {/* <Routes>

@@ -39,11 +39,11 @@ function FooterComponent () {
     </div>
     <div className="footer-row">
       <div className="legal-links">
-          <Link to="legal/privacy.html" target="_parent">Privacy Policy</Link>
-          <Link to="legal/cookies.html" target="_parent">Cookies Policy</Link>
-          <Link to="legal/termsAndConditions.html" target="_parent">Terms & Conditions</Link>
-          <Link to="legal/shippingPolicy.html" target="_parent">Shipping Policy</Link>
-          <Link to="legal/returnPolicy.html" target="_parent">Return Policy</Link>
+          <Link to="/privacy-policy">Privacy Policy</Link>
+          <Link to="/cookie-policy">Cookies Policy</Link>
+          <Link to="/terms-and-conditions">Terms & Conditions</Link>
+          <Link to="/shipping-policy">Shipping Policy</Link>
+          <Link to="/return-policy">Return Policy</Link>
       </div>
       
       <div className="signature">

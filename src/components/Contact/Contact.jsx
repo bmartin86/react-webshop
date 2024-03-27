@@ -56,30 +56,30 @@ function Contact () {
           </div>
             <div class="checkbox">
             <div>
-              <input type="checkbox" required name="required-checkbox" />
+              <input type="checkbox" required name="required-checkbox" id="required-checkbox" />
             </div>
             <div>
-              <label for="required-checkbox">
+              <label htmlFor="required-checkbox">
                 I accept the collection and processing of personal data provided in the form, without which my request cannot be fulfilled, and allow FASHION STORE to contact me for the purpose of sending notifications. *
               </label>
             </div>
           </div>
           <div class="checkbox">
             <div>
-              <input type="checkbox" name="newsletter" />
+              <input type="checkbox" name="offers-checkbox" id="offers-checkbox"/>
             </div>
             <div>
-              <label for="newsletter">
+              <label htmlFor="offers-checkbox">
                 Send me exclusive offers and discounts tailored to my preferences.             
               </label>
             </div>
           </div>
           <div class="checkbox">
             <div>
-              <input type="checkbox" name="newsletter" />
+              <input type="checkbox" name="newsletter-checkbox" id="newsletter-checkbox" />
             </div>
             <div>
-              <label for="newsletter">
+              <label htmlFor="newsletter-checkbox">
                 Subscribe me to the newsletter.         
               </label>
             </div>
