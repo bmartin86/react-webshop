@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
-import { React, useState } from 'react';
+import { React } from 'react';
+import './App.css';
 import { HeaderComponent } from './components/HeaderComponent/HeaderComponent';
 import { MainComponent } from './components/MainComponent/MainComponent';
 import { FooterComponent } from './components/FooterComponent/FooterComponent';
@@ -10,8 +11,7 @@ import { Products } from './components/Products/Products';
 import { Blogs } from './components/Newsroom/Blogs';
 import { BlogDetail } from './components/Newsroom/BlogDetail';
 import { ProductDetail } from "./components/Products/ProductDetail";
-import './App.css';
-import { AppWrapperComponent } from "./components/AppWrapperComponent/AppWrapperComponent";
+// import { AppWrapperComponent } from "./components/AppWrapperComponent/AppWrapperComponent";
 import { ProductList } from "./components/Products/ProductList";
 import { productList } from "./assets/productList";
 import { CookiePolicy } from "./components/Legal/CookiePolicy";
@@ -49,18 +49,6 @@ function App() {
             <Route path="*" element={<ErrorPage title={"404 - Page not found"} />} />
           </Route>
         </Routes>
-        {/* <Routes>
-          <Route path="/" element={<MainComponent />}>
-            <Route index element={<Page title={"Home Page"} />} />
-            <Route path="/about" element={<Page title={"About"} />} />
-            <Route path="/blogs" element={<Blog />}>
-              <Route path="/blogs/:id" element={<BlogPost />} />
-            </Route>
-            <Route path="/contact" element={<Page title={"Contact"} />} />
-            <Route path="/privacy-policy" element={<Page title={"Privacy Policy"} />} />
-            <Route path="*" element={<Page title={"404 - Page not found"} />} />
-          </Route>
-        </Routes> */}
         <FooterComponent />
       </BrowserRouter>
     </>

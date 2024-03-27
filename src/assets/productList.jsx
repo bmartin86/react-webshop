@@ -49,5 +49,23 @@ export const productList = [
       
     ],
     thumbnail: "https://res.cloudinary.com/dx6qjxz55/image/upload/v1711201635/men-jacket4_zqo6m8.webp"
-    }
+    },
+    {
+      id: 4, 
+      gender: "woman",
+      category: ["New Arrival", "Dress"], 
+      name: "Woman Zebra Dress", 
+      description: "Elevate your look with this sleek woman's Zebra Dress. Timelessly stylish and versatile, its minimalist design makes it a wardrobe staple for any occasion. Crafted with attention to detail and premium materials, this jacket effortlessly combines sophistication with everyday comfort, ensuring you stand out with understated elegance wherever you go.",
+      price: "69,99",
+      discout: "0",
+      images: [
+        "https://res.cloudinary.com/dx6qjxz55/image/upload/v1711204126/women-shirt-dress-3_xdnsvz.webp",
+        "https://res.cloudinary.com/dx6qjxz55/image/upload/v1711204125/women-shirt-dress-2_exphk4.webp",
+        "https://res.cloudinary.com/dx6qjxz55/image/upload/v1711204124/women-shirt-dress_fecgu4.jpg",
+        "https://res.cloudinary.com/dx6qjxz55/image/upload/v1711204126/women-shirt-dress-4_n6xv0h.webp",
+        "https://res.cloudinary.com/dx6qjxz55/image/upload/v1711204127/women-shirt-dress-5_irl5zd.webp"
+        
+      ],
+      thumbnail: "https://res.cloudinary.com/dx6qjxz55/image/upload/v1711204126/women-shirt-dress-3_xdnsvz.webp"
+      }
 ]
