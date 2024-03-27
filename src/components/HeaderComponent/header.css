@@ -1,3 +1,28 @@
+#header {
+  background: rgb(0,0,0);
+  background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgb(11, 11, 11) 95%, rgb(21, 21, 21) 100%);
+  color: var(--main-text-color);
+}
+
+.header-nav {
+  display: flex;
+  justify-content: center;
+  padding: 1em 0;
+  gap: 3em;
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.header-nav a {
+  color: var(--main-text-color);
+  text-decoration: none;
+}
+
+.header-nav a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+ }
+
 .header-top-row {
   display: flex;
   justify-content: space-between;

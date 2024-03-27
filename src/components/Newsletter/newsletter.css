@@ -1,0 +1,65 @@
+
+
+.flex-row h2 {
+  letter-spacing: .1em;
+}
+
+.flex-row h3 {
+  letter-spacing: .005em;
+}
+
+.newsletter-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
+}
+
+.newsletter-submit-box,
+#newsletter .flex-row {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+.newsletter-flex select,
+.newsletter-flex input {
+  border: 1px solid black;
+  border-radius: 2px;
+  padding: 1.4%;
+  box-sizing: border-box;
+  flex: 1;
+}
+
+.newsletter-submit-box {
+  margin-top: 10px;
+  width: 26%;
+}
+
+#form-submit {
+  background-color: var(--button-background-black);
+  color: white;
+  font-weight: 700;
+  padding: 1.2em;
+  width: 100%;
+}
+
+#form-submit:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+#form-submit:active {
+  transform:scale(1.02);
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  font-size: var(--small-font-size);
+  margin: 10px 0;
+}
+
+.checkbox-info {
+  justify-content: center;
+}
