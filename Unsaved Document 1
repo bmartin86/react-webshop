@@ -1,0 +1,29 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './styles/ProductCard.css';
+
+function ProductCard ({product}) {
+  return (
+    <div className="product-card" key={product.id}>
+      <div className="product-img-box">
+        <Link to={"/products/"+  product.id}>
+          <img src={product.thumbnail} alt="Model wearing product" className="product-image" />
+        </Link>
+        <div className="heart-container">
+          {/* Replace with heart icon/button */}
+          <button onClick={() => handleFavorite(product.id)}>Fav-icon</button>
+        </div>
+      </div>
+      <div className="product-description">
+        <Link to={"/products/"+ product.id} className="product-name">
+          {product.name}
+        </Link>
+        <div className="product-price">{product.price} &euro;</div>
+        {product.category.length > 0 && (
+          <div className="product-category">{product.category[0]}</div>
+        )}
+      </div>
+    </div>
+  )
+}
+export { ProductCard }

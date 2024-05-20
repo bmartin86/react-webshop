@@ -1,0 +1,153 @@
+#cart-main {
+  padding: 0 10vw 10vh;
+}
+
+#cart-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+}
+
+#cart-left {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--secondary-background-color);
+  padding: 1.6em;
+  gap: 0.5em;
+}
+
+.cart-item {
+  display: flex;
+}
+
+.cart-img-wrapper {
+  flex: 1;
+}
+
+.cart-img {
+  width: 100%;
+}
+
+.item-info-wrapper {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  padding-left: 2em;
+}
+
+.item-info-top {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.item-name {
+  margin-bottom: 0.3em;
+}
+
+.item-info-middle {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  align-items: center;
+}
+
+.item-info-middle > * {
+  font-size: var(--small-font-size);
+}
+
+.item-info-bottom {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding-left: 4rem;
+}
+
+#item-quantity-selector {
+  display: flex;
+  background-color: var(--secondary-background-color);
+  color: black;
+  width: 90px;
+  border: 1px solid black;
+  border-radius: 2px;
+}
+
+#item-quantity-selector div {
+  flex: 1;
+  padding: 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.5s smooth;
+}
+
+#item-quantity-selector div:nth-child(1):hover,
+#item-quantity-selector div:nth-child(3):hover {
+  background-color: lightgrey;
+  cursor: pointer;
+}
+
+.trash-icon-div {
+  flex: 1;
+  margin: 0 auto;
+  position: relative;
+  background-color: var(--secondary-background-color);
+}
+
+#trash-icon {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: 1.3em;
+  color: gray;
+  cursor: pointer;
+}
+
+#trash-icon:active {
+  transform: scale(1.14);
+}
+
+#cart-right {
+  flex: 1;
+  background-color: var(--secondary-background-color);
+  padding: 2em 1em;
+  height: 40vh;
+}
+
+#checkout-box-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+#order-detail {
+  display: block;
+  width: 100%;
+}
+
+.order-detail-top,
+.order-detail-bottom,
+.total-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.order-detail-top {
+  /* border-top: 1px solid gray; */
+  padding-top: 1em;
+}
+
+.order-detail-bottom {
+  border-bottom: 1px solid gray;
+  padding-bottom: 1em;
+}
+
+.total-box {
+  width: 100%;
+  font-weight: 700;
+  padding: 1em 0;
+}

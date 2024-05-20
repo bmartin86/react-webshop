@@ -1,28 +1,41 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './styles/ProductCard.css';
+import { React } from "react";
+import { Link } from "react-router-dom";
+import "./styles/ProductCard.css";
 
-function ProductCard ({product}) {
+function ProductCard({ product }) {
   return (
-    <div className="product-card">
-      <div className="product-img-box">
-        <Link key={product.id} to={"/products/"+  product.id}>
-          <img src={product.thumbnail} alt="Model wearing product" className="product-image" />
-        </Link>
-        <div className="heart-container">
-          <input type="checkbox" />
+    <>
+      <div className="product-card" key={product.productId}>
+        <div className="product-img-box">
+          <Link to={`/products/${product.productId}`}>
+            <img
+              src={
+                product.images?.[0]?.imageUrl || "https://dummyimage.com/300"
+              }
+              alt="Model wearing product"
+              className="product-image"
+            />
+          </Link>
+          <div className="heart-container">
+            {/* Replace with heart icon/button */}
+            <button onClick={() => handleFavorite(product.productId)}>
+              Fav-icon
+            </button>
+          </div>
+        </div>
+        <div className="product-description">
+          <Link to={`/products/${product.productId}`} className="product-name">
+            {product.productName}
+          </Link>
+          <div className="product-price">{product.productPrice} &euro;</div>
+          {product.category && (
+            <div className="product-category">
+              {product.category.categoryName}
+            </div>
+          )}
         </div>
       </div>
-      <div className="product-description">
-          <a href="productCategories.html">
-            <div className="product-name">
-            {product.name}
-            </div>
-          </a>
-        <div className="product-price">{product.price} &euro;</div>
-        <div className="product-category">{product.category[0]}</div>
-      </div>
-    </div>
-  )
+    </>
+  );
 }
-export { ProductCard }
+export { ProductCard };

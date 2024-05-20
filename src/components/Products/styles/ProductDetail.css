@@ -31,13 +31,18 @@
 
 .product-description-div h3 {
   margin-top: 0;
-  margin-bottom: .6em;
+  margin-bottom: 0.6em;
   font-size: 1.4em;
 }
 
 .product-description-div p {
   margin: 0;
-  padding-top: .6em;
+  padding-top: 0.6em;
+}
+
+.discountedPrice,
+.price {
+  font-size: 1.3em;
 }
 
 .old-price {
@@ -45,9 +50,12 @@
   color: black;
 }
 
-.price {
+.discountedPrice {
   color: var(--discount-color-red);
-  font-size: 1.3em;
+}
+
+.price {
+  color: black;
 }
 
 .sizes-div {
@@ -56,13 +64,13 @@
   align-content: flex-start;
   flex-wrap: wrap;
   gap: 1em;
-  margin-top: .2em;
+  margin-top: 0.2em;
   margin-bottom: 1em;
 }
 
 .size-box {
   width: 15%;
-  padding: .7em 0;
+  padding: 0.7em 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,7 +94,7 @@
 #add-to-bag {
   border: none;
   background-color: black;
-  color: #FFF;
+  color: #fff;
   margin-bottom: 1em;
   transition: opacity 1s smooth;
 }
@@ -103,7 +111,7 @@
 
 #add-to-bag:active,
 #see-cart:active {
-  transform:scale(1.02);
+  transform: scale(1.02);
 }
 
 .description-text-div {
@@ -113,7 +121,7 @@
 .right-div ul {
   list-style: none;
   padding: 0;
-} 
+}
 
 .bold {
   font-weight: 700;

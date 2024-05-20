@@ -1,30 +1,34 @@
-import { useState, useEffect } from 'react';
+import { useData } from "../../context/DataContext";
+import { React, useState, useEffect } from "react";
 import { ProductCard } from "./ProductCard";
 import { ProductsSidebar } from "./ProductsSidebar";
-// import { productList } from '../../assets/productList';
-import './styles/Products.css';
+import "./styles/Products.css";
 
-function ProductList ({productList}) {
+function ProductList() {
   const [showDropdown, setShowDropdown] = useState(false);
-        
-  useEffect(() => {
-    const closeDropdowns = () => {
-      setShowDropdown(false);
-    };
+  const { products, loading, error } = useData();
 
-    document.addEventListener('click', closeDropdowns);
+  // useEffect(() => {
+  //   const closeDropdowns = () => {
+  //     setShowDropdown(false);
+  //   };
 
-    return () => {
-      document.removeEventListener('click', closeDropdowns);
-    };
-  }, []); 
+  //   document.addEventListener("click", closeDropdowns);
+
+  //   return () => {
+  //     document.removeEventListener("click", closeDropdowns);
+  //   };
+  // }, []);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <>
       <main>
         <div id="products-main-wrapper">
           <aside id="asideProducts">
-            <ProductsSidebar  toggleDropdown={setShowDropdown} />
+            <ProductsSidebar toggleDropdown={setShowDropdown} />
           </aside>
 
           <div id="products-div">
@@ -32,21 +36,18 @@ function ProductList ({productList}) {
               <h2>All Products</h2>
             </div>
             <div id="products-wrapper">
-            {productList?.map(product => {
-                console.log("Each product in the list =>", product)
-              return(
-                <article className="productCard" key={product.id}>
-                  <ProductCard product={product}/>
-                </article>
-                )}
-              )
-            }
+              {products.map((product) => {
+                return (
+                  <article className="productCard" key={product.productId}>
+                    <ProductCard product={product} />
+                  </article>
+                );
+              })}
             </div>
           </div>
         </div>
       </main>
     </>
-  )
+  );
 }
-export { ProductList }
-
+export { ProductList };
