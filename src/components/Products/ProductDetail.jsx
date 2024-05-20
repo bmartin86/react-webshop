@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import handleFetchError from "../../functions/handleFetchError";
+import { CartContext } from "../../context/CartContext";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import "./styles/ProductDetail.css";
@@ -11,6 +11,9 @@ function ProductDetail() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const cart = useContext(CartContext);
+  const psqID = product.productSizeQuantities;
+
   useEffect(() => {
     const fetchProductById = async () => {
       try {
@@ -20,8 +23,7 @@ function ProductDetail() {
         const product = res.data;
         setProduct(product);
       } catch (error) {
-        console.error("Error fetching data:", error);
-        setError(error);
+        handleFetchError(error, setError);
       } finally {
         setLoading(false);
       }
@@ -33,15 +35,23 @@ function ProductDetail() {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
+  const handleFetchError = async (error, setError) => {
+    if (error.response) {
+      console.error("Server Error:", error.response.data);
+    } else if (error.request) {
+      console.error("Network Error:", error.request);
+    } else {
+      console.error("Error:", error.message);
+    }
+    setError(error);
+  };
+
   const calculateDiscountedPrice = (price, discount) => {
     return (price - price * (discount / 100)).toFixed(2);
   };
 
   let nbsp = "\u00A0";
-  {
-    console.log("selected product => ", product);
-  }
-
+  console.log("product :", product);
   return (
     <main>
       <div className="main-product-wrapper">
@@ -75,17 +85,22 @@ function ProductDetail() {
             <div className="sizes-div">
               {product.productSizeQuantities?.map((productSize) => {
                 return (
-                  <div
+                  <button
                     className="size-box"
                     key={productSize.productSizeQuantityId}
                   >
                     {productSize.productSize.sizeName}
-                  </div>
+                  </button>
                 );
               })}
             </div>
             <div>
-              <button id="add-to-bag">Add to bag</button>
+              <button
+                id="add-to-bag"
+                onClick={() => cart.addOneToCart(product.productSizeQuantities)}
+              >
+                Add to cart
+              </button>
             </div>
             <div>
               <Link to="/cart">

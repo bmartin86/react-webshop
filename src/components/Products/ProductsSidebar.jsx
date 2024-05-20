@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { useData } from "../../context/DataContext";
+//import { DataContext } from "../../context/DataContext";
 import "./styles/ProductsSidebar.css";
 import { Icon } from "@iconify/react";
 
-function ProductsSidebar({ toggleDropdown }) {
+function ProductsSidebar({ toggleDropdown, categories, loading, error }) {
   const [categoryDropdown, setCategoryDropdown] = useState(false);
   const [productDropdown, setProductDropdown] = useState(false);
   const [categoryIcon, setCategoryIcon] = useState("ep:arrow-down-bold");
   const [productIcon, setProductIcon] = useState("ep:arrow-down-bold");
-  const { categories, loading, error } = useData();
+  // const { categories, loading, error } = useData();
 
   function toggleCategoryDropdown(event) {
     event.stopPropagation();

@@ -1,4 +1,4 @@
-const handleFetchError = (error, setError) => {
+const handleFetchError = async (error, setError) => {
   if (error.response) {
     console.error("Server Error:", error.response.data);
   } else if (error.request) {

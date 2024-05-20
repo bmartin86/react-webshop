@@ -81,6 +81,12 @@
 
 .size-box:hover {
   cursor: pointer;
+  background-color: #e9e9e9;
+}
+
+.size-box.selected {
+  border-color: #007bff;
+  background-color: #e9f7ff;
 }
 
 #add-to-bag,
