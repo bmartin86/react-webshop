@@ -85,8 +85,8 @@
 }
 
 .size-box.selected {
-  border-color: #007bff;
-  background-color: #e9f7ff;
+  background-color: #222222;
+  color: var(--main-background-color);
 }
 
 #add-to-bag,

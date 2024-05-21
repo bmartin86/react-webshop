@@ -10,9 +10,12 @@ function ProductDetail() {
   const [product, setProduct] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [selectedSizeId, setSelectedSizeId] = useState(null);
 
   const cart = useContext(CartContext);
-  const psqID = product.productSizeQuantities;
+  const productQuantity = cart.getProductQuantity(selectedSizeId);
+  console.log("selectedSizeId =>", selectedSizeId);
+  console.log("cartItems =>", cart.items);
 
   useEffect(() => {
     const fetchProductById = async () => {
@@ -50,6 +53,21 @@ function ProductDetail() {
     return (price - price * (discount / 100)).toFixed(2);
   };
 
+  const handleSelectSize = (sizeId) => {
+    setSelectedSizeId(sizeId);
+  };
+
+  const handleAddToCart = (selectedSizeId) => {
+    if (selectedSizeId !== null) {
+      const selectedProductSize = product.productSizeQuantities.find(
+        (size) => size.productSizeQuantityId === selectedSizeId
+      );
+      cart.addOneToCart(selectedProductSize, product);
+    } else {
+      alert("Please select a size first.");
+    }
+  };
+
   let nbsp = "\u00A0";
   console.log("product :", product);
   return (
@@ -83,21 +101,30 @@ function ProductDetail() {
             )}
             <p id="sizes">Sizes</p>
             <div className="sizes-div">
-              {product.productSizeQuantities?.map((productSize) => {
-                return (
-                  <button
-                    className="size-box"
-                    key={productSize.productSizeQuantityId}
-                  >
-                    {productSize.productSize.sizeName}
-                  </button>
-                );
-              })}
+              {product.productSizeQuantities?.map((productSize) => (
+                <label
+                  key={productSize.productSizeQuantityId}
+                  className="size-radio"
+                >
+                  <input
+                    type="radio"
+                    name="size"
+                    value={productSize.productSizeQuantityId}
+                    checked={
+                      selectedSizeId === productSize.productSizeQuantityId
+                    }
+                    onChange={() =>
+                      handleSelectSize(productSize.productSizeQuantityId)
+                    }
+                  />
+                  {productSize.productSize.sizeName}
+                </label>
+              ))}
             </div>
             <div>
               <button
                 id="add-to-bag"
-                onClick={() => cart.addOneToCart(product.productSizeQuantities)}
+                onClick={() => handleAddToCart(selectedSizeId)}
               >
                 Add to cart
               </button>

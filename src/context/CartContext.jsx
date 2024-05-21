@@ -24,7 +24,7 @@ export function CartProvider({ children }) {
     return quantity;
   }
 
-  function addOneToCart(id) {
+  function addOneToCart(id, product) {
     const quantity = getProductQuantity(id);
 
     if (quantity === 0) {
@@ -34,6 +34,7 @@ export function CartProvider({ children }) {
         {
           id: id,
           quantity: 1,
+          product: product,
         },
       ]);
     } else {
