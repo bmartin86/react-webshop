@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const CartContext = createContext({
   items: [],
@@ -9,8 +9,15 @@ export const CartContext = createContext({
   getTotalCost: () => {},
 });
 
-export function CartProvider({ children }) {
-  const [cartProducts, setCartProducts] = useState([]);
+function CartProvider({ children }) {
+  const [cartProducts, setCartProducts] = useState(() => {
+    const savedCart = localStorage.getItem("cartProducts");
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
+  }, [cartProducts]);
 
   function getProductQuantity(id) {
     const quantity = cartProducts.find(
@@ -39,7 +46,6 @@ export function CartProvider({ children }) {
       ]);
     } else {
       // product is in cart
-      // [ { id: 1 , quantity: 3 }, { id: 2, quantity: 1 } ]    add to product id of 2
       setCartProducts(
         cartProducts.map(
           (product) =>
@@ -81,9 +87,9 @@ export function CartProvider({ children }) {
 
   function getTotalCost() {
     let totalCost = 0;
-    cartProducts.map((cartItem) => {
-      const productData = getProductData(cartItem.id);
-      totalCost += productData.price * cartItem.quantity;
+    cartProducts.forEach((cartItem) => {
+      const productData = cartItem.product;
+      totalCost += productData.productPrice * cartItem.quantity;
     });
     return totalCost;
   }

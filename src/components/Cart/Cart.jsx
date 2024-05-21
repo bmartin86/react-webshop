@@ -1,12 +1,16 @@
 import { CartContext } from "../../context/CartContext";
-import React, { useEffect, useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Cart.css";
 
 function Cart() {
-  const cart = useContext(CartContext);
-  console.log("cartItemsformCartComponent =>", cart.items);
-  const cartProducts = cart.items;
+  const {
+    items,
+    addOneToCart,
+    removeOneFromCart,
+    deleteFromCart,
+    getTotalCost,
+  } = useContext(CartContext);
 
   return (
     <>
@@ -16,8 +20,8 @@ function Cart() {
         </div>
         <div id="cart-wrapper">
           <section id="cart-left">
-            {cartProducts.length > 0 ? (
-              cartProducts.map((cartProduct) => (
+            {items.length > 0 ? (
+              items.map((cartProduct) => (
                 <article
                   className="cart-item"
                   key={cartProduct.id.productSizeQuantityId}
@@ -39,28 +43,45 @@ function Cart() {
                         {cartProduct.product.productName}
                       </div>
                       <div className="item-price">
-                        {cartProduct.productPrice}&euro;
+                        {cartProduct.product.productPrice}&euro;
                       </div>
                     </div>
                     <div className="item-info-middle">
                       <div>Art.no.</div>
-                      <div>0979945001</div>
+                      <div>{cartProduct.id.productSizeQuantityId}</div>
                       <div>Size:</div>
                       <div>{cartProduct.id.productSize.sizeName}</div>
-                      <div>Color:</div>
-                      <div>Blue</div>
+                      <div>Category:</div>
+                      <div>{cartProduct.product.category.categoryName}</div>
                       <div>Total:</div>
-                      <div>{cartProduct.product.productPrice}&euro;</div>
+                      <div>
+                        {(
+                          cartProduct.product.productPrice *
+                          cartProduct.quantity
+                        ).toFixed(2)}
+                        &euro;
+                      </div>
                     </div>
                     <div className="item-info-bottom">
                       <div id="item-quantity-selector">
-                        <div>&minus;</div>
+                        <div onClick={() => removeOneFromCart(cartProduct.id)}>
+                          &minus;
+                        </div>
                         <div>{cartProduct.quantity}</div>
-                        <div>&plus;</div>
+                        <div
+                          onClick={() =>
+                            addOneToCart(cartProduct.id, cartProduct.product)
+                          }
+                        >
+                          &plus;
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div className="trash-icon-div">
+                  <div
+                    className="trash-icon-div"
+                    onClick={() => deleteFromCart(cartProduct.id)}
+                  >
                     <img
                       src="images/icons/trash-can-regular.svg"
                       alt="Trash can icon"
@@ -84,7 +105,7 @@ function Cart() {
               <div id="order-detail">
                 <div className="order-detail-top">
                   <div>Order Value</div>
-                  <div>60.99&euro;</div>
+                  <div>{getTotalCost()}&euro;</div>
                 </div>
                 {/* <!-- dodati promotion --> */}
                 {/* <!-- <div>
@@ -98,7 +119,7 @@ function Cart() {
               </div>
               <div className="total-box">
                 <div>Total</div>
-                <div>60.99&euro;</div>
+                <div>{getTotalCost()}&euro;</div>
               </div>
               <div id="check-out-box">
                 <Link to="checkout.html">
