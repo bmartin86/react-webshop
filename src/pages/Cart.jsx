@@ -1,9 +1,9 @@
-import { CartContext } from "../../context/CartContext";
+import { CartContext } from "../context/CartContext";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react/dist/iconify.js";
 
-import "./Cart.css";
+import "../styles/Cart.css";
 
 function Cart() {
   const {

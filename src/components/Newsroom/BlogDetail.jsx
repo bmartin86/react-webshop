@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { blogList } from "../../assets/blogList";
 import "./styles/BlogDetail.css";
 import { useState } from "react";
-import { SocialLinks } from "../SocialLinks/SocialLinks";
+import { SocialLinks } from "../SocialLinks";
 
 function BlogDetail() {
   const URLParams = useParams();

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
-import "./footer.css";
-import { NavLinks } from "../NavLinks/NavLinks";
-import { SocialLinks } from "../SocialLinks/SocialLinks";
+import { NavLinks } from "./NavLinks";
+import { SocialLinks } from "./SocialLinks";
+import "../styles/footer.css";
 
 function FooterComponent() {
   return (

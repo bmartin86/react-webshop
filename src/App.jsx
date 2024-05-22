@@ -1,14 +1,14 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import { React } from "react";
-import { HeaderComponent } from "./components/HeaderComponent/HeaderComponent";
-import { MainComponent } from "./components/MainComponent/MainComponent";
-import { FooterComponent } from "./components/FooterComponent/FooterComponent";
-import { HomePage } from "./components/HomePage/HomePage";
-import { About } from "./components/About/About";
-import { Contact } from "./components/Contact/Contact";
+import { HeaderComponent } from "./components/HeaderComponent";
+import { MainComponent } from "./components/MainComponent";
+import { FooterComponent } from "./components/FooterComponent";
+import { HomePage } from "./pages/HomePage";
+import { About } from "./pages/About";
+import { Contact } from "./pages/Contact";
 import { Products } from "./components/Products/Products";
-import Cart from "./components/Cart/Cart";
+import Cart from "./pages/Cart";
 import { Blogs } from "./components/Newsroom/Blogs";
 import { BlogDetail } from "./components/Newsroom/BlogDetail";
 import { ProductDetail } from "./components/Products/ProductDetail";
@@ -18,7 +18,7 @@ import { PrivacyPolicy } from "./components/Legal/PrivacyPolicy";
 import { ReturnPolicy } from "./components/Legal/ReturnPolicy";
 import { ShippingPolicy } from "./components/Legal/ShippingPolicy";
 import { TermsAndConditions } from "./components/Legal/TermsAndConditions";
-import { ErrorPage } from "./components/Pages/ErrorPage";
+import { ErrorPage } from "./pages/ErrorPage";
 import ScrollToTop from "./components/ScrollToTop";
 
 function App() {

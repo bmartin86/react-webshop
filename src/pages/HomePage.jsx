@@ -1,10 +1,10 @@
-import "../MainStyles.css";
+import "../styles/MainStyles.css";
 import React from "react";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { AsideBlogComponent } from "../Newsroom/AsideBlogComponent";
-import { ProductCategory } from "../Products/ProductCategory";
-import { Newsletter } from "../Newsletter/Newsletter";
+import { AsideBlogComponent } from "../components/Newsroom/AsideBlogComponent";
+import { ProductCategory } from "../components/Products/ProductCategory";
+import { Newsletter } from "../components/Newsletter";
 
 function HomePage() {
   useEffect(() => {
