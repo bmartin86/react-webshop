@@ -1,6 +1,11 @@
 #header {
-  background: rgb(0,0,0);
-  background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgb(11, 11, 11) 95%, rgb(21, 21, 21) 100%);
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgb(11, 11, 11) 95%,
+    rgb(21, 21, 21) 100%
+  );
   color: var(--main-text-color);
 }
 
@@ -21,7 +26,7 @@
 .header-nav a:hover {
   text-decoration: underline;
   cursor: pointer;
- }
+}
 
 .header-top-row {
   display: flex;
@@ -56,12 +61,12 @@
 }
 
 .social-links button {
-  transition: transform .4s smooth;
+  transition: transform 0.4s smooth;
 }
 
 .social-links button:hover,
 .search-cart button:hover {
-  transform:scale(1.2);
+  transform: scale(1.2);
   cursor: pointer;
 }
 
@@ -74,13 +79,25 @@
 }
 
 .cart-icon-button {
-  padding: .4em;
+  padding: 0.4em;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
- .logo-box  {
+.cartNotifications {
+  position: absolute;
+  top: 2px;
+  right: 12px;
+  background-color: rgb(200, 0, 0);
+  color: white;
+  font-size: 11px;
+  padding: 2px 5px;
+  border-radius: 10px;
+}
+
+.logo-box {
   flex: 2;
   display: flex;
   justify-content: center;
@@ -98,4 +115,8 @@
 
 .logo-box a:hover {
   cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }

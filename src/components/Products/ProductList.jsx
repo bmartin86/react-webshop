@@ -12,10 +12,7 @@ function ProductList() {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  console.log("products from api =>", products);
 
-  // const context = useContext(DataContext);
-  // const products = context.
   useEffect(() => {
     const fetchProductsApi = async () => {
       setLoading(true);

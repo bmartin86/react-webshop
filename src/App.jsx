@@ -19,11 +19,13 @@ import { ReturnPolicy } from "./components/Legal/ReturnPolicy";
 import { ShippingPolicy } from "./components/Legal/ShippingPolicy";
 import { TermsAndConditions } from "./components/Legal/TermsAndConditions";
 import { ErrorPage } from "./components/Pages/ErrorPage";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <>
       <BrowserRouter>
+        <ScrollToTop />
         <HeaderComponent />
         <Routes>
           <Route path="/" element={<MainComponent />}>

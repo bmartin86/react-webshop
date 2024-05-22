@@ -6,22 +6,30 @@ import "./styles/ProductDetail.css";
 
 function ProductDetail() {
   const { id: productId } = useParams();
-  const idx = Number.parseInt(productId);
+  //const idx = Number.parseInt(productId);
   const [product, setProduct] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedSizeId, setSelectedSizeId] = useState(null);
 
-  const cart = useContext(CartContext);
-  const productQuantity = cart.getProductQuantity(selectedSizeId);
-  console.log("selectedSizeId =>", selectedSizeId);
-  console.log("cartItems =>", cart.items);
+  //const cart = useContext(CartContext);
+
+  const {
+    items,
+    addOneToCart,
+    getProductQuantity,
+    removeOneFromCart,
+    deleteFromCart,
+    getTotalCost,
+    calculateDiscountedPrice,
+  } = useContext(CartContext);
+  const productQuantity = getProductQuantity(selectedSizeId);
 
   useEffect(() => {
     const fetchProductById = async () => {
       try {
         const res = await axios.get(
-          `${import.meta.env.VITE_API_URL}/products/${idx}`
+          `${import.meta.env.VITE_API_URL}/products/${productId}`
         );
         const product = res.data;
         setProduct(product);
@@ -49,10 +57,6 @@ function ProductDetail() {
     setError(error);
   };
 
-  const calculateDiscountedPrice = (price, discount) => {
-    return (price - price * (discount / 100)).toFixed(2);
-  };
-
   const handleSelectSize = (sizeId) => {
     setSelectedSizeId(sizeId);
   };
@@ -62,14 +66,14 @@ function ProductDetail() {
       const selectedProductSize = product.productSizeQuantities.find(
         (size) => size.productSizeQuantityId === selectedSizeId
       );
-      cart.addOneToCart(selectedProductSize, product);
+      addOneToCart(selectedProductSize, product);
     } else {
       alert("Please select a size first.");
     }
   };
 
   let nbsp = "\u00A0";
-  console.log("product :", product);
+
   return (
     <main>
       <div className="main-product-wrapper">

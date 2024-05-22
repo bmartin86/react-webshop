@@ -5,7 +5,8 @@ main {
 }
 
 main h1,
-main h2 {
+main h2,
+main h3 {
   font-family: var(--header-font);
 }
 
@@ -15,7 +16,7 @@ main h2 {
 .category-title,
 .aside-blog-title,
 #checkout-title h2,
-#cart-title h2 {
+#cart-title h3 {
   margin: 0;
   padding: 1em 0 10px;
   font-size: 33px;
@@ -26,7 +27,7 @@ main h2 {
 }
 
 #checkout-title h2,
-#cart-title h2 {
+#cart-title h3 {
   text-align: center;
 }
 
@@ -56,7 +57,7 @@ main h2 {
   bottom: -30px;
   left: -12px;
   opacity: 0;
-  transform: opacity .3s smooth;
+  transform: opacity 0.3s smooth;
   pointer-events: none;
 }
 
@@ -84,7 +85,7 @@ main h2 {
 }
 
 .form-submit:active {
-  transform:scale(1.02);
+  transform: scale(1.02);
 }
 
 .submit-box,
@@ -112,7 +113,7 @@ main h2 {
 #check-out-box:active,
 #log-in-box:active,
 #submit-box:active {
-  transform:scale(1.014);
+  transform: scale(1.014);
 }
 
 /* main hero section */
@@ -123,8 +124,12 @@ main h2 {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0);
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0,0,0,0.2) 50%, 
-  rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.2) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
   z-index: 1;
 }
 
@@ -139,7 +144,7 @@ main h2 {
   border-bottom: 2px solid black;
 }
 
-.index-h1{
+.index-h1 {
   text-align: center;
   padding: 0 9vw;
   display: flex;
@@ -178,8 +183,13 @@ main h2 {
 }
 
 .hero-image {
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.3) 30%, rgba(0,0,0,0.5) 100%), 
-  url("https://res.cloudinary.com/dx6qjxz55/image/upload/v1711201671/model-1_c4xmcy.webp");
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.3) 30%,
+      rgba(0, 0, 0, 0.5) 100%
+    ),
+    url("https://res.cloudinary.com/dx6qjxz55/image/upload/v1711201671/model-1_c4xmcy.webp");
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -216,13 +226,13 @@ main h2 {
 }
 
 .logo-text::before {
-  content: "\2666" "\0020";
+  content: "\2666""\0020";
   font-size: 22px;
   vertical-align: middle;
 }
 
 .logo-text::after {
-  content: "\0020" "\2666";
+  content: "\0020""\2666";
   font-size: 22px;
   vertical-align: middle;
 }
@@ -230,7 +240,7 @@ main h2 {
 .hero-text h3,
 .hero-text h5,
 .video-hero-text h2 {
-  letter-spacing: .1em;
+  letter-spacing: 0.1em;
   margin-bottom: 1em;
   font-size: 30px;
   font-weight: 300;
@@ -241,7 +251,7 @@ main h2 {
   font-size: 17px;
   margin: 0;
   padding-bottom: 12px;
-  letter-spacing: .04em;
+  letter-spacing: 0.04em;
 }
 
 .hero-text button,
@@ -255,7 +265,7 @@ main h2 {
   border-radius: 2px;
   text-align: center;
   cursor: pointer;
-  transition: background-color .2s, color .2s ;
+  transition: background-color 0.2s, color 0.2s;
 }
 
 .hero-text button:hover,
@@ -288,7 +298,7 @@ main h2 {
 }
 
 .products-image {
-  width: 100%
+  width: 100%;
 }
 
 /* productListCard section */
@@ -304,7 +314,7 @@ main h2 {
   gap: 12px;
 }
 
-.hidden-elem{
+.hidden-elem {
   flex: 1;
 }
 
@@ -325,17 +335,17 @@ main h2 {
 .scroll-icon-box-left button {
   border: none;
   background-color: var(--main-background-color);
-  transition: transform .14s;
+  transition: transform 0.14s;
 }
 
 .scroll-icon-box-right button:hover {
-  transform:scale(1.15);
+  transform: scale(1.15);
   cursor: pointer;
 }
 .scroll-icon-box-left button:hover {
-  transform:scale(1.15);
+  transform: scale(1.15);
   cursor: pointer;
-} 
+}
 
 .scroll-icon-box-left {
   justify-content: flex-end;
@@ -363,4 +373,3 @@ main h2 {
   margin: auto;
   width: 80vw;
 } */
-

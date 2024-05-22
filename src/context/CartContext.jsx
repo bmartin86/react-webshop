@@ -7,6 +7,8 @@ export const CartContext = createContext({
   removeOneFromCart: () => {},
   deleteFromCart: () => {},
   getTotalCost: () => {},
+  calculateDiscountedPrice: () => {},
+  // cartItemsCount:
 });
 
 function CartProvider({ children }) {
@@ -14,70 +16,80 @@ function CartProvider({ children }) {
     const savedCart = localStorage.getItem("cartProducts");
     return savedCart ? JSON.parse(savedCart) : [];
   });
+  const [cartItemsCount, setCartItemsCount] = useState(0);
 
   useEffect(() => {
     localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
   }, [cartProducts]);
 
-  function getProductQuantity(id) {
-    const quantity = cartProducts.find(
-      (product) => product.id === id
-    )?.quantity;
-
-    if (quantity === undefined) {
-      return 0;
-    }
-
-    return quantity;
+  function getProductQuantity(productSizeQuantityId) {
+    const product = cartProducts.find(
+      (product) => product.id.productSizeQuantityId === productSizeQuantityId
+    );
+    return product ? product.quantity : 0;
   }
 
   function addOneToCart(id, product) {
-    const quantity = getProductQuantity(id);
+    const productSizeQuantityId = id.productSizeQuantityId;
+    const quantity = getProductQuantity(productSizeQuantityId);
 
-    if (quantity === 0) {
-      // product is not in cart
-      setCartProducts([
-        ...cartProducts,
-        {
-          id: id,
-          quantity: 1,
-          product: product,
-        },
-      ]);
-    } else {
-      // product is in cart
-      setCartProducts(
-        cartProducts.map(
-          (product) =>
-            product.id === id // if condition
-              ? { ...product, quantity: product.quantity + 1 } // if statement is true
-              : product // if statement is false
-        )
+    // Find the available quantity for the selected product size
+    const availableQuantity = product.productSizeQuantities.find(
+      (size) => size.productSizeQuantityId === productSizeQuantityId
+    )?.availableQuantity;
+
+    if (availableQuantity === undefined) {
+      console.error(
+        "Product size not found or available quantity not specified"
       );
+      return;
+    }
+
+    if (quantity < availableQuantity) {
+      if (quantity === 0) {
+        // Product is not in cart, add it
+        setCartProducts([
+          ...cartProducts,
+          {
+            id: id, // Use id directly
+            quantity: 1,
+            product: product,
+          },
+        ]);
+      } else {
+        // Product is in cart, increment its quantity
+        setCartProducts(
+          cartProducts.map((item) =>
+            item.id.productSizeQuantityId === productSizeQuantityId
+              ? { ...item, quantity: item.quantity + 1 }
+              : item
+          )
+        );
+      }
+    } else {
+      // Exceeds available quantity
+      alert(`Cannot add more than ${availableQuantity} of this item.`);
     }
   }
 
   function removeOneFromCart(id) {
-    const quantity = getProductQuantity(id);
+    const productSizeQuantityId = id.productSizeQuantityId;
+    const quantity = getProductQuantity(productSizeQuantityId);
 
     if (quantity == 1) {
       deleteFromCart(id);
     } else {
       setCartProducts(
-        cartProducts.map(
-          (product) =>
-            product.id === id // if condition
-              ? { ...product, quantity: product.quantity - 1 } // if statement is true
-              : product // if statement is false
+        cartProducts.map((product) =>
+          product.id === id
+            ? { ...product, quantity: product.quantity - 1 }
+            : product
         )
       );
     }
   }
 
   function deleteFromCart(id) {
-    // [] if an object meets a condition, add the object to array
-    // [product1, product2, product3]
-    // [product1, product3]
     setCartProducts((cartProducts) =>
       cartProducts.filter((currentProduct) => {
         return currentProduct.id != id;
@@ -89,10 +101,25 @@ function CartProvider({ children }) {
     let totalCost = 0;
     cartProducts.forEach((cartItem) => {
       const productData = cartItem.product;
-      totalCost += productData.productPrice * cartItem.quantity;
+      let price = parseFloat(productData.productPrice); // Ensure the price is a number
+
+      // Apply discount if present
+      if (productData.discountPercentage) {
+        const discount = (price * productData.discountPercentage) / 100;
+        price = price - discount;
+      }
+
+      totalCost += price * cartItem.quantity;
     });
-    return totalCost;
+
+    return totalCost.toFixed(2);
   }
+
+  const calculateDiscountedPrice = (price, discount) => {
+    return (price - price * (discount / 100)).toFixed(2);
+  };
+
+  const totalItemsInCart = (items) => {};
 
   const contextValue = {
     items: cartProducts,
@@ -101,6 +128,7 @@ function CartProvider({ children }) {
     removeOneFromCart,
     deleteFromCart,
     getTotalCost,
+    calculateDiscountedPrice,
   };
 
   return (
@@ -109,8 +137,3 @@ function CartProvider({ children }) {
 }
 
 export default CartProvider;
-
-// CODE DOWN HERE
-
-// Context (cart, addToCart, removeCart)
-// Provider -> gives your React app access to all the things in your context
