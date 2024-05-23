@@ -8,15 +8,36 @@ export const CartContext = createContext({
   deleteFromCart: () => {},
   getTotalCost: () => {},
   calculateDiscountedPrice: () => {},
-  // cartItemsCount:
+  filters: {
+    genderId: [],
+    categoriesId: [],
+  },
+  setFilters: () => {},
 });
 
 function CartProvider({ children }) {
+  const [filters, setFilters] = useState({
+    genderId: [],
+    categoriesId: [],
+  });
+
+  const handleCheckboxChange = (type, value) => {
+    setFilters((prevFilters) => {
+      const newFilterValues = prevFilters[type].includes(value)
+        ? prevFilters[type].filter((item) => item !== value)
+        : [...prevFilters[type], value];
+
+      return {
+        ...prevFilters,
+        [type]: newFilterValues,
+      };
+    });
+  };
+
   const [cartProducts, setCartProducts] = useState(() => {
     const savedCart = localStorage.getItem("cartProducts");
     return savedCart ? JSON.parse(savedCart) : [];
   });
-  const [cartItemsCount, setCartItemsCount] = useState(0);
 
   useEffect(() => {
     localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
@@ -47,17 +68,17 @@ function CartProvider({ children }) {
 
     if (quantity < availableQuantity) {
       if (quantity === 0) {
-        // Product is not in cart, add it
+        // Product not in cart
         setCartProducts([
           ...cartProducts,
           {
-            id: id, // Use id directly
+            id: id,
             quantity: 1,
             product: product,
           },
         ]);
       } else {
-        // Product is in cart, increment its quantity
+        // Product is in cart, quantity++
         setCartProducts(
           cartProducts.map((item) =>
             item.id.productSizeQuantityId === productSizeQuantityId
@@ -67,7 +88,6 @@ function CartProvider({ children }) {
         );
       }
     } else {
-      // Exceeds available quantity
       alert(`Cannot add more than ${availableQuantity} of this item.`);
     }
   }
@@ -119,8 +139,6 @@ function CartProvider({ children }) {
     return (price - price * (discount / 100)).toFixed(2);
   };
 
-  const totalItemsInCart = (items) => {};
-
   const contextValue = {
     items: cartProducts,
     getProductQuantity,
@@ -129,6 +147,9 @@ function CartProvider({ children }) {
     deleteFromCart,
     getTotalCost,
     calculateDiscountedPrice,
+    filters,
+    setFilters,
+    handleCheckboxChange,
   };
 
   return (

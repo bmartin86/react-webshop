@@ -1,14 +1,17 @@
-import { useState } from "react";
-//import { DataContext } from "../../context/DataContext";
-import "./styles/ProductsSidebar.css";
+import { useState, useContext, useEffect } from "react";
+import { CartContext } from "../../context/CartContext";
 import { Icon } from "@iconify/react";
+import "./styles/ProductsSidebar.css";
 
-function ProductsSidebar({ toggleDropdown, categories, loading, error }) {
+function ProductsSidebar({ toggleDropdown, categories, genders }) {
+  console.log("categories", categories);
+  console.log("genders", genders);
   const [categoryDropdown, setCategoryDropdown] = useState(false);
   const [productDropdown, setProductDropdown] = useState(false);
   const [categoryIcon, setCategoryIcon] = useState("ep:arrow-down-bold");
   const [productIcon, setProductIcon] = useState("ep:arrow-down-bold");
-  // const { categories, loading, error } = useData();
+  //const { filters, setFilters } = useContext(CartContext);
+  const { filters, handleCheckboxChange } = useContext(CartContext);
 
   function toggleCategoryDropdown(event) {
     event.stopPropagation();
@@ -26,12 +29,21 @@ function ProductsSidebar({ toggleDropdown, categories, loading, error }) {
     toggleDropdown(true);
   }
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
+  const handleGenderChange = (e) => {
+    handleCheckboxChange("genderId", e.target.value);
+  };
+
+  const handleCategoryChange = (e) => {
+    handleCheckboxChange("categoriesId", e.target.value);
+  };
+
+  useEffect(() => {
+    console.log("filters =>", filters);
+  }, [filters]);
 
   return (
     <div id="products-aside">
-      <form action="#" method="get" target="_self">
+      <form>
         <ul>
           <li className="filter-group">
             <button
@@ -50,39 +62,22 @@ function ProductsSidebar({ toggleDropdown, categories, loading, error }) {
             <ul
               className={`dropdown-content ${categoryDropdown ? "show" : ""}`}
             >
-              <li>
-                <label>
-                  <input
-                    type="radio"
-                    name="gender"
-                    id="gender-female"
-                    value="female"
-                  />
-                  WOMEN
-                </label>
-              </li>
-              <li>
-                <label>
-                  <input
-                    type="radio"
-                    name="gender"
-                    id="gender-male"
-                    value="male"
-                  />
-                  MEN
-                </label>
-              </li>
-              <li>
-                <label>
-                  <input
-                    type="radio"
-                    name="gender"
-                    id="gender-children"
-                    value="children"
-                  />
-                  CHILDREN
-                </label>
-              </li>
+              {genders.map((gender) => (
+                <li key={gender.genderId}>
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="gender-filter"
+                      value={gender.genderId}
+                      onChange={handleGenderChange}
+                      checked={filters.genderId.includes(
+                        gender.genderId.toString()
+                      )}
+                    />
+                    {gender.genderName}
+                  </label>
+                </li>
+              ))}
             </ul>
           </li>
           <li className="filter-group">
@@ -106,23 +101,17 @@ function ProductsSidebar({ toggleDropdown, categories, loading, error }) {
                     <input
                       type="checkbox"
                       name="product-filter"
-                      id={category.categoryId}
-                      value={category.categoryName}
+                      value={category.categoryId}
+                      onChange={handleCategoryChange}
+                      checked={filters.categoriesId.includes(
+                        category.categoryId.toString()
+                      )}
                     />
                     {category.categoryName}
                   </label>
                 </li>
               ))}
             </ul>
-          </li>
-          <li>
-            <input
-              type="submit"
-              name="submit-filter-data"
-              id="submitFilterData"
-              className="filter-submit-button"
-              value="Apply Filters"
-            />
           </li>
         </ul>
       </form>

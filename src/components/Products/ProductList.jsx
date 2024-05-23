@@ -1,5 +1,6 @@
 // import { DataContext } from "../../context/DataContext";
 import { React, useState, useEffect, useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 import { ProductCard } from "./ProductCard";
 import { ProductsSidebar } from "./ProductsSidebar";
 import axios from "axios";
@@ -10,8 +11,10 @@ function ProductList() {
   const [showDropdown, setShowDropdown] = useState(false);
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [genders, setGenders] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const { filters } = useContext(CartContext);
 
   useEffect(() => {
     const fetchProductsApi = async () => {
@@ -21,7 +24,14 @@ function ProductList() {
         const response = await axios.get(
           `${import.meta.env.VITE_API_URL}/products`
         );
-        setProducts(response.data);
+        const fetchedProducts = response.data;
+
+        const structuredProducts = fetchedProducts.map((product) => ({
+          ...product,
+          genderId: product.gender.genderId,
+          categoryId: product.category.categoryId,
+        }));
+        setProducts(structuredProducts);
       } catch (error) {
         handleFetchError(error, setError);
       } finally {
@@ -44,8 +54,24 @@ function ProductList() {
       }
     };
 
+    const fetchCGendersApi = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_API_URL}/gender`
+        );
+        setGenders(response.data);
+      } catch (error) {
+        handleFetchError(error, setError);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchProductsApi();
     fetchCategoriesApi();
+    fetchCGendersApi();
 
     const closeDropdowns = () => {
       setShowDropdown(false);
@@ -58,6 +84,18 @@ function ProductList() {
     };
   }, []);
 
+  console.log("products =>", products);
+
+  const filteredProducts = products.filter((product) => {
+    const matchesGender =
+      filters.genderId.length === 0 ||
+      filters.genderId.includes(product.genderId.toString());
+    const matchesCategory =
+      filters.categoriesId.length === 0 ||
+      filters.categoriesId.includes(product.categoryId.toString());
+    return matchesGender && matchesCategory;
+  });
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
@@ -69,6 +107,7 @@ function ProductList() {
             <ProductsSidebar
               toggleDropdown={setShowDropdown}
               categories={categories}
+              genders={genders}
               loading={loading}
               error={error}
             />
@@ -79,7 +118,7 @@ function ProductList() {
               <h2>All Products</h2>
             </div>
             <div id="products-wrapper">
-              {products.map((product) => {
+              {filteredProducts.map((product) => {
                 return (
                   <article className="productCard" key={product.productId}>
                     <ProductCard product={product} />
