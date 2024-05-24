@@ -1,4 +1,4 @@
-import { CartContext } from "../context/CartContext";
+import { useCartContext } from "../context/CartContext";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
@@ -8,8 +8,8 @@ import "../styles/header.css";
 import "../styles/MainStyles.css";
 
 function HeaderComponent() {
-  const cart = useContext(CartContext);
-  const productsCount = cart.items.reduce(
+  const { items, query, handleInputChange } = useCartContext();
+  const productsCount = items.reduce(
     (sum, product) => sum + product.quantity,
     0
   );
@@ -59,7 +59,13 @@ function HeaderComponent() {
           </div>
 
           <div className="search-cart">
-            <input type="text" placeholder="Search..." />
+            <input
+              className="search-input"
+              type="text"
+              onChange={handleInputChange}
+              value={query}
+              placeholder="Search products..."
+            />
             <button className="cart-icon-button">
               <Link to="/cart">
                 <Icon

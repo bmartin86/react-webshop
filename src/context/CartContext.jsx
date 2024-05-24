@@ -1,39 +1,102 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
+import axios from "axios";
+import handleFetchError from "../functions/handleFetchError";
 
-export const CartContext = createContext({
-  items: [],
-  getProductQuantity: () => {},
-  addOneToCart: () => {},
-  removeOneFromCart: () => {},
-  deleteFromCart: () => {},
-  getTotalCost: () => {},
-  calculateDiscountedPrice: () => {},
-  filters: {
-    genderId: [],
-    categoriesId: [],
-  },
-  setFilters: () => {},
-});
+export const CartContext = createContext();
 
-function CartProvider({ children }) {
-  const [filters, setFilters] = useState({
-    genderId: [],
-    categoriesId: [],
-  });
+export function CartProvider({ children }) {
+  // --------- BACKEND API ----------
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [genders, setGenders] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const handleCheckboxChange = (type, value) => {
-    setFilters((prevFilters) => {
-      const newFilterValues = prevFilters[type].includes(value)
-        ? prevFilters[type].filter((item) => item !== value)
-        : [...prevFilters[type], value];
+  // ----------- Filters ---------------
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedGender, setSelectedGender] = useState(null);
+  const [query, setQuery] = useState("");
 
-      return {
-        ...prevFilters,
-        [type]: newFilterValues,
-      };
-    });
+  // // ----------- Input Filter -----------
+
+  const handleInputChange = (event) => {
+    setQuery(event.target.value);
   };
 
+  const handleCategoryChange = (event) => {
+    setSelectedCategory(event.target.value);
+  };
+  console.log(
+    "selected category =>",
+    typeof selectedCategory,
+    selectedCategory
+  );
+
+  const handleGenderChange = (event) => {
+    setSelectedGender(event.target.value);
+  };
+  console.log("selected gender =>", typeof selectedGender, selectedGender);
+
+  useEffect(() => {
+    const fetchProductsApi = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_API_URL}/products`
+        );
+        const fetchedProducts = response.data.map((product) => ({
+          ...product,
+          genderId: product.gender.genderId,
+          categoryId: product.category.categoryId,
+          genderName: product.gender.genderName,
+          categoryName: product.category.categoryName,
+        }));
+        setProducts(fetchedProducts);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProductsApi();
+  }, []);
+
+  useEffect(() => {
+    function filterProducts() {
+      let filtered = products;
+
+      if (query) {
+        const lowerCaseQuery = query.toLowerCase();
+        filtered = filtered.filter(
+          (product) =>
+            product.productName.toLowerCase().includes(lowerCaseQuery) ||
+            product.categoryName.toLowerCase().includes(lowerCaseQuery) ||
+            product.genderName.toLowerCase().includes(lowerCaseQuery)
+        );
+      }
+
+      if (selectedGender) {
+        filtered = filtered.filter(
+          (product) => product.genderId === parseInt(selectedGender)
+        );
+      }
+
+      if (selectedCategory) {
+        filtered = filtered.filter(
+          (product) => product.categoryId === parseInt(selectedCategory)
+        );
+      }
+
+      setFilteredProducts(filtered);
+    }
+
+    filterProducts();
+  }, [products, query, selectedGender, selectedCategory]);
+
+  // ----------- Local Storage ------------------
   const [cartProducts, setCartProducts] = useState(() => {
     const savedCart = localStorage.getItem("cartProducts");
     return savedCart ? JSON.parse(savedCart) : [];
@@ -43,6 +106,7 @@ function CartProvider({ children }) {
     localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
   }, [cartProducts]);
 
+  // ------------- Cart Functions ------------------
   function getProductQuantity(productSizeQuantityId) {
     const product = cartProducts.find(
       (product) => product.id.productSizeQuantityId === productSizeQuantityId
@@ -139,7 +203,47 @@ function CartProvider({ children }) {
     return (price - price * (discount / 100)).toFixed(2);
   };
 
+  // --------------- BACKEND API -----------------
+
+  const fetchCategoriesApi = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/categories`
+      );
+      setCategories(response.data);
+    } catch (error) {
+      handleFetchError(error, setError);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const fetchGendersApi = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/gender`
+      );
+      setGenders(response.data);
+    } catch (error) {
+      handleFetchError(error, setError);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const contextValue = {
+    // backend api
+    fetchCategoriesApi,
+    fetchGendersApi,
+    loading,
+    setLoading,
+    error,
+    setError,
+    // cart
     items: cartProducts,
     getProductQuantity,
     addOneToCart,
@@ -147,9 +251,22 @@ function CartProvider({ children }) {
     deleteFromCart,
     getTotalCost,
     calculateDiscountedPrice,
-    filters,
-    setFilters,
-    handleCheckboxChange,
+    // filters
+    query,
+    selectedCategory,
+    selectedGender,
+    handleInputChange,
+    handleCategoryChange,
+    handleGenderChange,
+    // data
+    products,
+    filteredProducts,
+    setFilteredProducts,
+    setProducts,
+    categories,
+    setCategories,
+    genders,
+    setGenders,
   };
 
   return (
@@ -157,4 +274,6 @@ function CartProvider({ children }) {
   );
 }
 
-export default CartProvider;
+// export default CartProvider;
+
+export const useCartContext = () => useContext(CartContext);

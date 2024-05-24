@@ -1,17 +1,21 @@
 import { useState, useContext, useEffect } from "react";
-import { CartContext } from "../../context/CartContext";
+import { useCartContext } from "../../context/CartContext";
 import { Icon } from "@iconify/react";
 import "./styles/ProductsSidebar.css";
 
-function ProductsSidebar({ toggleDropdown, categories, genders }) {
-  console.log("categories", categories);
-  console.log("genders", genders);
+function ProductsSidebar({ toggleDropdown }) {
   const [categoryDropdown, setCategoryDropdown] = useState(false);
   const [productDropdown, setProductDropdown] = useState(false);
   const [categoryIcon, setCategoryIcon] = useState("ep:arrow-down-bold");
   const [productIcon, setProductIcon] = useState("ep:arrow-down-bold");
-  //const { filters, setFilters } = useContext(CartContext);
-  const { filters, handleCheckboxChange } = useContext(CartContext);
+  const {
+    categories,
+    genders,
+    handleCategoryChange,
+    handleGenderChange,
+    loading,
+    error,
+  } = useCartContext();
 
   function toggleCategoryDropdown(event) {
     event.stopPropagation();
@@ -29,17 +33,8 @@ function ProductsSidebar({ toggleDropdown, categories, genders }) {
     toggleDropdown(true);
   }
 
-  const handleGenderChange = (e) => {
-    handleCheckboxChange("genderId", e.target.value);
-  };
-
-  const handleCategoryChange = (e) => {
-    handleCheckboxChange("categoriesId", e.target.value);
-  };
-
-  useEffect(() => {
-    console.log("filters =>", filters);
-  }, [filters]);
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <div id="products-aside">
@@ -66,13 +61,10 @@ function ProductsSidebar({ toggleDropdown, categories, genders }) {
                 <li key={gender.genderId}>
                   <label>
                     <input
-                      type="checkbox"
+                      type="radio"
                       name="gender-filter"
                       value={gender.genderId}
                       onChange={handleGenderChange}
-                      checked={filters.genderId.includes(
-                        gender.genderId.toString()
-                      )}
                     />
                     {gender.genderName}
                   </label>
@@ -99,13 +91,10 @@ function ProductsSidebar({ toggleDropdown, categories, genders }) {
                 <li key={category.categoryId}>
                   <label>
                     <input
-                      type="checkbox"
+                      type="radio"
                       name="product-filter"
                       value={category.categoryId}
                       onChange={handleCategoryChange}
-                      checked={filters.categoriesId.includes(
-                        category.categoryId.toString()
-                      )}
                     />
                     {category.categoryName}
                   </label>

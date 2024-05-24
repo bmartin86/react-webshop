@@ -1,4 +1,4 @@
-import { CartContext } from "../../context/CartContext";
+import { useCartContext } from "../../context/CartContext";
 import React, { useEffect, useState, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
@@ -6,23 +6,13 @@ import "./styles/ProductDetail.css";
 
 function ProductDetail() {
   const { id: productId } = useParams();
-  //const idx = Number.parseInt(productId);
   const [product, setProduct] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedSizeId, setSelectedSizeId] = useState(null);
 
-  //const cart = useContext(CartContext);
-
-  const {
-    items,
-    addOneToCart,
-    getProductQuantity,
-    removeOneFromCart,
-    deleteFromCart,
-    getTotalCost,
-    calculateDiscountedPrice,
-  } = useContext(CartContext);
+  const { addOneToCart, getProductQuantity, calculateDiscountedPrice } =
+    useCartContext();
   const productQuantity = getProductQuantity(selectedSizeId);
 
   useEffect(() => {

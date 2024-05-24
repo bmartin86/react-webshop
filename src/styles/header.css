@@ -71,10 +71,13 @@
 }
 
 .search-cart input {
-  padding: 6px;
-  margin-right: 10px;
-  border: 1px solid black;
+  padding: 12px 20px;
+  border: none;
+  background: #f7f6f6;
+  outline: none;
+  margin-right: 20px;
   border-radius: 4px;
+  position: relative;
   min-width: 250px;
 }
 
