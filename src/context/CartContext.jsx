@@ -152,7 +152,9 @@ export function CartProvider({ children }) {
         );
       }
     } else {
-      alert(`Cannot add more than ${availableQuantity} of this item.`);
+      alert(
+        `Insufficient quantity. Available quantity for this item: ${availableQuantity}.`
+      );
     }
   }
 

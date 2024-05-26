@@ -141,17 +141,6 @@ function CartProductDetails({ isInCheckout }) {
                   />
                 </div>
               )}
-              {/* <div
-                className="trash-icon-div"
-                onClick={() => deleteFromCart(cartProduct.id)}
-              >
-                <Icon
-                  icon="iwwa:trash"
-                  width="1.6rem"
-                  height="1.6rem"
-                  className="trashIcon"
-                />
-              </div> */}
             </article>
           ))
         ) : (
