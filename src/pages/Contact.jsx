@@ -8,8 +8,8 @@ function Contact() {
         <section id="contact">
           <ul>
             <li>
-              <div class="adresses">
-                <address class="bold">FASHION STORE</address>
+              <div className="adresses">
+                <address className="bold">FASHION STORE</address>
                 <address>+385(0)22/ 123-4567</address>
                 <address>fashion.store@info.org</address>
                 <address>123 Street, City, Country</address>
@@ -17,7 +17,7 @@ function Contact() {
             </li>
 
             <li>
-              <div class="contact-social-links">
+              <div className="contact-social-links">
                 <SocialLinks />
               </div>
             </li>
@@ -25,15 +25,15 @@ function Contact() {
         </section>
 
         <section className="newsletterWrapper">
-          <div class="flex-row h2">
+          <div className="flex-row h2">
             <h2 id="newsletter-title">SEND US A MESSAGE</h2>
           </div>
-          <div class="flex-row h3">
+          <div className="flex-row h3">
             <h3 id="newsletter-title">Please insert Your informations below</h3>
           </div>
           <form action="#" method="get">
-            <div class="newsletter-flex">
-              <div class="flex-row">
+            <div className="newsletter-flex">
+              <div className="flex-row">
                 <select name="gender" id="gender">
                   <option value="Unknown" id="value-1">
                     Please choose salutation
@@ -50,7 +50,7 @@ function Contact() {
                 </select>
                 <input type="text" name="title" placeholder="Title" />
               </div>
-              <div class="flex-row">
+              <div className="flex-row">
                 <input
                   type="text"
                   name="first-name"
@@ -64,7 +64,7 @@ function Contact() {
                   required
                 />
               </div>
-              <div class="flex-row">
+              <div className="flex-row">
                 <input
                   type="email"
                   name="email"
@@ -73,7 +73,7 @@ function Contact() {
                 />
                 <input type="text" name="company" placeholder="Company" />
               </div>
-              <div class="textarea-div">
+              <div className="textarea-div">
                 <textarea
                   name="message"
                   id=""
@@ -83,7 +83,7 @@ function Contact() {
                 ></textarea>
               </div>
             </div>
-            <div class="checkbox">
+            <div className="checkbox">
               <div>
                 <input
                   type="checkbox"
@@ -101,7 +101,7 @@ function Contact() {
                 </label>
               </div>
             </div>
-            <div class="checkbox">
+            <div className="checkbox">
               <div>
                 <input
                   type="checkbox"
@@ -116,7 +116,7 @@ function Contact() {
                 </label>
               </div>
             </div>
-            <div class="checkbox">
+            <div className="checkbox">
               <div>
                 <input
                   type="checkbox"
@@ -130,13 +130,13 @@ function Contact() {
                 </label>
               </div>
             </div>
-            <div class="flex-row">
-              <div class="newsletter-submit-box">
+            <div className="flex-row">
+              <div className="newsletter-submit-box">
                 <input type="submit" id="form-submit" value="Send now" />
               </div>
             </div>
-            <div class="flex-row">
-              <div class="checkbox checkbox-info">
+            <div className="flex-row">
+              <div className="checkbox checkbox-info">
                 Fields marked with an (*) are required information.
               </div>
             </div>

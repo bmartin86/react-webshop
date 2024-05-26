@@ -137,7 +137,10 @@ function ProductDetail() {
               {product.category.categoryName}
             </p>
             <p id="description-text">{product.productDescription}</p>
-            <p className="small-font">Article number:1215834003</p>
+            <p className="small-font">
+              Article number:121583
+              {product.productSizeQuantities.productSizeQuantityId}
+            </p>
             <ul>
               <li>
                 <span className="bold">Model size: </span>

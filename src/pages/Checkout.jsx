@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/Checkout.css";
 import { useNavigate } from "react-router-dom";
+import CartProductDetails from "../components/CartProductDetails";
 
 function Checkout() {
   const {
@@ -23,7 +24,6 @@ function Checkout() {
       try {
         const cartTotal = getTotalCost(items);
         setTotal(cartTotal);
-
         // Update formData with the correct total value
         setFormData((prevFormData) => ({
           ...prevFormData,
@@ -90,7 +90,7 @@ function Checkout() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
-    setLoading(true); // Show loading state
+    setLoading(true);
 
     try {
       const response = await axios.post(
@@ -103,31 +103,11 @@ function Checkout() {
       navigate("/");
     } catch (error) {
       console.error("Error:", error);
-      setError(error.message); // Set error message
+      setError(error.message);
     } finally {
-      setLoading(false); // Hide loading state
+      setLoading(false);
     }
   };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setError(null);
-  //   setLoading(true); // Show loading state
-
-  //   try {
-  //     const response = await axios.post(
-  //       `${import.meta.env.VITE_API_URL}/cart/purchase`,
-  //       formData
-  //     );
-  //     console.log("Response:", response.data);
-  //     // Handle response as needed
-  //   } catch (error) {
-  //     console.error("Error:", error);
-  //     setError(error.message); // Set error message
-  //   } finally {
-  //     setLoading(false); // Hide loading state
-  //   }
-  // };
 
   let nbsp = "\u00A0";
 
@@ -321,7 +301,10 @@ function Checkout() {
             </div>
 
             <div className="checkout-products-wrapper">
-              <div className="checkout-products-flexbox">
+              <>
+                <CartProductDetails isInCheckout={true} />
+              </>
+              {/* <div className="checkout-products-flexbox">
                 <div className="description-row"></div>
                 {items.length > 0 ? (
                   items.map((product) => (
@@ -373,27 +356,20 @@ function Checkout() {
                 ) : (
                   <></>
                 )}
-              </div>
+              </div> */}
             </div>
           </div>
 
           <div className="transaction-info-wrapper">
             <div className="transaction-info-flexbox">
               <div className="transaction-info-row">
-                <div>Discounts</div>
-                <div>none</div>
-              </div>
-              <div className="transaction-info-row">
                 <div>Order value</div>
                 <div>{total}&euro;</div>
               </div>
-              <div className="transaction-info-row">
-                <div>Promotion</div>
-                <div id="discount">19.99&euro;</div>
-              </div>
+
               <div className="transaction-info-row">
                 <div>Shipping</div>
-                <div>5.99&euro;</div>
+                <div>FREE</div>
               </div>
               <div id="transaction-info-bold">
                 <div>Total</div>
@@ -407,14 +383,14 @@ function Checkout() {
                       <br />
                     </span>
                     FASHION STORE's{" "}
-                    <a href="legal/termsAndConditions.html">
+                    <a href="/terms-and-conditions">
                       General Terms and Conditions.
                     </a>
                   </div>
                   <div>
                     We will process your personal data in accordance with
                     FASHION STORE's{" "}
-                    <a href="legal/privacy.html">Privacy Notice.</a>
+                    <a href="/privacy-policy">Privacy Notice.</a>
                   </div>
                   <div>
                     Please note that the tax amount is an estimation and the
@@ -424,7 +400,7 @@ function Checkout() {
                   </div>
                   <div>
                     Need help? Please contact{" "}
-                    <a href="contact.html">Customer Service.</a>{" "}
+                    <a href="/contact">Customer Service.</a>{" "}
                     <span>
                       <br />
                     </span>
