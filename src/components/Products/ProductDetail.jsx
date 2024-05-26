@@ -95,25 +95,27 @@ function ProductDetail() {
             )}
             <p id="sizes">Sizes</p>
             <div className="sizes-div">
-              {product.productSizeQuantities?.map((productSize) => (
-                <label
-                  key={productSize.productSizeQuantityId}
-                  className="size-radio"
-                >
-                  <input
-                    type="radio"
-                    name="size"
-                    value={productSize.productSizeQuantityId}
-                    checked={
-                      selectedSizeId === productSize.productSizeQuantityId
-                    }
-                    onChange={() =>
-                      handleSelectSize(productSize.productSizeQuantityId)
-                    }
-                  />
-                  {productSize.productSize.sizeName}
-                </label>
-              ))}
+              {product.productSizeQuantities
+                .filter((productSize) => productSize.availableQuantity > 0)
+                .map((productSize) => (
+                  <label
+                    key={productSize.productSizeQuantityId}
+                    className="size-radio"
+                  >
+                    <input
+                      type="radio"
+                      name="size"
+                      value={productSize.productSizeQuantityId}
+                      checked={
+                        selectedSizeId === productSize.productSizeQuantityId
+                      }
+                      onChange={() =>
+                        handleSelectSize(productSize.productSizeQuantityId)
+                      }
+                    />
+                    {productSize.productSize.sizeName}
+                  </label>
+                ))}
             </div>
             <div>
               <button
