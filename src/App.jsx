@@ -20,6 +20,7 @@ import { ShippingPolicy } from "./components/Legal/ShippingPolicy";
 import { TermsAndConditions } from "./components/Legal/TermsAndConditions";
 import { ErrorPage } from "./pages/ErrorPage";
 import ScrollToTop from "./components/ScrollToTop";
+import { Checkout } from "./pages/Checkout";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
               <Route path="/products/:id" element={<ProductDetail />} />
             </Route>
             <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
             <Route path="/blogs" element={<Blogs />} />

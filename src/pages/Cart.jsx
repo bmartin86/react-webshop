@@ -175,7 +175,7 @@ function Cart() {
                 <div>{getTotalCost()}&euro;</div>
               </div>
               <div id="check-out-box">
-                <Link to="checkout.html">
+                <Link to="/checkout">
                   <div>Continue to checkout</div>
                 </Link>
               </div>

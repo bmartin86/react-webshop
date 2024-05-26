@@ -1,11 +1,9 @@
-
-
 .flex-row h2 {
-  letter-spacing: .1em;
+  letter-spacing: 0.1em;
 }
 
 .flex-row h3 {
-  letter-spacing: .005em;
+  letter-spacing: 0.005em;
 }
 
 .newsletter-flex {
@@ -16,7 +14,7 @@
 }
 
 .newsletter-submit-box,
-#newsletter .flex-row {
+.newsletterWrapper .flex-row {
   display: flex;
   justify-content: center;
   gap: 1em;
@@ -50,7 +48,7 @@
 }
 
 #form-submit:active {
-  transform:scale(1.02);
+  transform: scale(1.02);
 }
 
 .checkbox {
@@ -65,9 +63,9 @@
 }
 
 .checkbox label span {
-  display: block; 
+  display: block;
 }
 
 .checkbox label span + span {
-  margin-top: 4px; 
+  margin-top: 4px;
 }

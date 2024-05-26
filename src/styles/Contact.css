@@ -1,4 +1,3 @@
-/* @import url('style.css'); */
 body {
   background-color: var(--main-background-color);
 }
@@ -32,7 +31,7 @@ main {
 }
 
 #contact li {
-  margin-top: .9em;
+  margin-top: 0.9em;
 }
 
 .adresses address {
@@ -51,7 +50,7 @@ main {
   position: relative;
   background-color: var(--main-background-color);
   border: none;
-  transition: transform .33s smooth;
+  transition: transform 0.33s smooth;
 }
 
 .contact-social-links button:hover {

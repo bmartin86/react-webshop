@@ -8,12 +8,12 @@ function Contact() {
         <section id="contact">
           <ul>
             <li>
-              <adresses class="adresses">
+              <div class="adresses">
                 <address class="bold">FASHION STORE</address>
                 <address>+385(0)22/ 123-4567</address>
                 <address>fashion.store@info.org</address>
                 <address>123 Street, City, Country</address>
-              </adresses>
+              </div>
             </li>
 
             <li>
@@ -24,7 +24,7 @@ function Contact() {
           </ul>
         </section>
 
-        <section id="newsletter">
+        <section className="newsletterWrapper">
           <div class="flex-row h2">
             <h2 id="newsletter-title">SEND US A MESSAGE</h2>
           </div>

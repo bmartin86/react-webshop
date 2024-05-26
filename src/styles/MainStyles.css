@@ -360,7 +360,7 @@ main h3 {
   width: 100%;
 }
 
-#newsletter {
+.newsletterWrapper {
   margin: auto;
   width: 75vw;
   background-color: var(--secondary-background-color);

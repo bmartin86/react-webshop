@@ -1,0 +1,159 @@
+#checkout-main {
+  padding: 0 10vw 15vh;
+}
+
+.checkout-main-flexbox {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  /* padding: 1em; */
+  /* display: flex;
+  justify-content: center; */
+  gap: 1em;
+}
+
+.checkout-left-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  background-color: var(--secondary-background-color);
+}
+
+.formWrapper,
+#my-info {
+  margin: 0;
+  padding: 0 1em;
+}
+
+#my-info {
+  padding-top: 1em;
+}
+
+.formInner {
+  display: grid;
+  grid-template-rows: auto;
+  grid-row-gap: 1em;
+}
+
+.formWrapper .flexRow {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+.formWrapper input {
+  border: 1px solid black;
+  border-radius: 2px;
+  padding: 1.4%;
+  box-sizing: border-box;
+  flex: 1;
+}
+
+.input-flex {
+  padding-bottom: 1em;
+}
+
+.form-h3 {
+  background-color: var(--main-background-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-flex-column,
+.input-flex {
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-flex-column {
+  flex-direction: column;
+}
+
+.input-flex input {
+  border: 1px solid black;
+  border-radius: 2px;
+  padding: 2%;
+  box-sizing: border-box;
+  flex-grow: 1;
+}
+
+.checkout-products-wrapper {
+  padding: 0 1em 1em;
+}
+
+.checkout-products-flexbox {
+  display: flex;
+  flex-direction: column;
+}
+
+.description-row {
+  padding: 6px;
+}
+
+.form-h3 span,
+.description-row {
+  font-size: var(--small-font-size);
+}
+
+.checkout-img {
+  width: 100%;
+}
+
+.products-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
+  grid-gap: 0.2em;
+}
+
+.transaction-info-wrapper {
+  /* height: 60vh; */
+  background-color: #fff;
+}
+
+.transaction-info-flexbox {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--small-font-size);
+  padding: 1em 2em;
+}
+
+.transaction-info-flexbox .transaction-info-row:first-child {
+  border-bottom: 1px solid gray;
+  margin-bottom: 10px;
+}
+
+#transaction-info-bold {
+  border-top: 1px solid black;
+  font-weight: 700;
+  font-size: var(--big-font-size);
+  margin-top: 10px;
+}
+
+.transaction-info-row,
+#transaction-info-bold {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+}
+
+#discount {
+  color: var(--discount-color-red);
+  text-decoration: line-through;
+}
+
+#disclaimer {
+  margin-top: 22px;
+}
+
+#disclaimer div {
+  margin-bottom: 12px;
+}
+
+#disclaimer a {
+  color: black;
+}

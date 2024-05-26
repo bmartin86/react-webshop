@@ -7,7 +7,6 @@
   position: sticky;
   top: 0;
   overflow-y: auto;
-  
 }
 
 #products-aside ul {
@@ -30,9 +29,9 @@
 
 .dropbtn {
   display: flex;
-  align-items: center; 
+  align-items: center;
   justify-content: space-between;
-  padding: 0;  
+  padding: 0;
 }
 
 .dropdown-content {
@@ -51,16 +50,16 @@
 
 .filter-group li {
   font-size: 14px !important;
-  font-weight: 400 !important; 
+  font-weight: 400 !important;
   margin-top: 8px;
 }
 
 .filter-submit-button {
   background-color: white;
   border: 1px solid rgb(0, 0, 0);
-  padding: .6em 1.4em;
-  letter-spacing: .03em;
-  transition: background-color .12s, color .12s, transform;
+  padding: 0.6em 1.4em;
+  letter-spacing: 0.03em;
+  transition: background-color 0.12s, color 0.12s, transform;
 }
 
 .filter-submit-button:hover {
@@ -70,5 +69,5 @@
 }
 
 .filter-submit-button:active {
-  transform:scale(1.014);
+  transform: scale(1.014);
 }

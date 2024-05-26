@@ -27,16 +27,10 @@ export function CartProvider({ children }) {
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
   };
-  console.log(
-    "selected category =>",
-    typeof selectedCategory,
-    selectedCategory
-  );
 
   const handleGenderChange = (event) => {
     setSelectedGender(event.target.value);
   };
-  console.log("selected gender =>", typeof selectedGender, selectedGender);
 
   useEffect(() => {
     const fetchProductsApi = async () => {
@@ -105,6 +99,12 @@ export function CartProvider({ children }) {
   useEffect(() => {
     localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
   }, [cartProducts]);
+
+  const clearCartProducts = () => {
+    console.log("Clearing cart products from local storage and state");
+    setCartProducts([]); // Clear state
+    localStorage.removeItem("cartProducts"); // Clear local storage
+  };
 
   // ------------- Cart Functions ------------------
   function getProductQuantity(productSizeQuantityId) {
@@ -245,6 +245,8 @@ export function CartProvider({ children }) {
     setError,
     // cart
     items: cartProducts,
+    clearCartProducts,
+    setCartProducts,
     getProductQuantity,
     addOneToCart,
     removeOneFromCart,

@@ -61,7 +61,7 @@ function HomePage() {
         </div>
       </section>
       <ProductCategory />
-      <section id="newsletter">
+      <section className="newsletterWrapper">
         <Newsletter />
       </section>
       <AsideBlogComponent />
