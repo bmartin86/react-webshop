@@ -62,6 +62,27 @@ function ProductDetail() {
     }
   };
 
+  // ------------- random functions--------------
+  function getRandomHeight(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  function getRandomSize(sizes) {
+    const randomIndex = Math.floor(Math.random() * sizes.length);
+    return sizes[randomIndex];
+  }
+
+  function getRandomFit(fits) {
+    const randomIndex = Math.floor(Math.random() * fits.length);
+    return fits[randomIndex];
+  }
+
+  const height = getRandomHeight(168, 192);
+  const sizes = ["S", "M", "L", "XL"];
+  const size = getRandomSize(sizes);
+  const fits = ["Loose Fit", "Slim Fit", "Regular Fit"];
+  const fit = getRandomFit(fits);
+
   let nbsp = "\u00A0";
 
   return (
@@ -141,50 +162,20 @@ function ProductDetail() {
             <p id="description-text">{product.productDescription}</p>
             <p className="small-font">
               Article number:121583
-              {product.productSizeQuantities.productSizeQuantityId}
+              <span>{product.productId}</span>
             </p>
             <ul>
               <li>
                 <span className="bold">Model size: </span>
-                The model is 177cm/5'10" and wears a size M
-              </li>
-              <li>
-                <span className="bold">Length: </span>
-                Long
-              </li>
-              <li>
-                <span className="bold">Waist Rise: </span>
-                Regular waist
+                The model is {height}cm tall and wears a size {size}
               </li>
               <li>
                 <span className="bold">Fit: </span>
-                Loose fit
-              </li>
-              <li>
-                <span className="bold">Style: </span>
-                Pull-on Pants, Straight Leg, Wide leg
-              </li>
-              <li>
-                <span className="bold">Description: </span>
-                Cream/dark blue, Patterned
+                {fit}
               </li>
               <li>
                 <span className="bold">Concept: </span>
                 MODERN CLASSIC
-              </li>
-            </ul>
-          </div>
-          <div className="materials-div">
-            <h3>Materials</h3>
-            <h4>Composition</h4>
-            <ul>
-              <li>
-                <span className="bold">Shell:</span>
-                Rayon 88%, Lyocell 10%, Linen 2%
-              </li>
-              <li>
-                <span className="bold">Pocket lining:</span>
-                Polyester 100%
               </li>
             </ul>
           </div>
