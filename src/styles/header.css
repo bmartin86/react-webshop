@@ -1,3 +1,11 @@
+#header-wrapper {
+  position: fixed;
+  top: -155px;
+  transition: top 0.3s ease-in-out;
+  z-index: 3;
+  width: 100%;
+}
+
 #header {
   background: rgb(0, 0, 0);
   background: linear-gradient(

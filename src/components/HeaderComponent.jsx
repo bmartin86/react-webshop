@@ -1,6 +1,6 @@
 import { useCartContext } from "../context/CartContext";
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { NavLinks } from "./NavLinks";
 import { SocialLinks } from "./SocialLinks";
@@ -14,8 +14,46 @@ function HeaderComponent() {
     0
   );
 
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop =
+        document.documentElement.scrollTop || document.body.scrollTop;
+      const header = document.getElementById("header-wrapper");
+      if (header) {
+        if (location.pathname === "/" && scrollTop > 60 && scrollTop <= 720) {
+          header.style.top = "0";
+        } else {
+          header.style.top = "-155px";
+        }
+      }
+    };
+
+    if (location.pathname === "/") {
+      window.addEventListener("scroll", handleScroll);
+    } else {
+      const header = document.getElementById("header-wrapper");
+      if (header) {
+        header.style.top = "0"; // Ensure header is visible on other routes
+      }
+    }
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      if (location.pathname === "/") {
+        window.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, [location.pathname]);
+
+  const headerStyle =
+    location.pathname === "/"
+      ? { position: "fixed", top: "-155px", transition: "top 0.3s" }
+      : { position: "relative", top: "0", transition: "none" };
+
   return (
-    <div className="header-wrapper">
+    <div id="header-wrapper" style={headerStyle}>
       <div id="header">
         <div className="header-top-row">
           <div className="social-links">
