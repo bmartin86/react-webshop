@@ -54,21 +54,16 @@
 }
 
 .sizes-div {
-  display: flex;
-  justify-content: space-between;
-  align-content: flex-start;
-  flex-wrap: wrap;
-  gap: 1em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2em;
   margin-top: 0.2em;
   margin-bottom: 1em;
 }
 
 .size-box {
-  width: 15%;
-  padding: 0.7em 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
+  padding: 0.7em 1em;
   border: 1px solid rgb(190, 190, 190);
   font-size: var(--small-font-size);
   background-color: var(--main-background-color);

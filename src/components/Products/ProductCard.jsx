@@ -6,10 +6,10 @@ import "./styles/ProductCard.css";
 
 function ProductCard({ product }) {
   const { calculateDiscountedPrice } = useCartContext();
-  const [isChecked, setIsChecked] = useState(false);
+  const [isFavChecked, setIsFavChecked] = useState(false);
 
-  const handleChange = () => {
-    setIsChecked(!isChecked);
+  const handleFavChange = () => {
+    setIsFavChecked(!isFavChecked);
     // TODO add function to handle favorite
     // handleFavorite(product.productId);
   };
@@ -32,8 +32,8 @@ function ProductCard({ product }) {
               <input
                 type="checkbox"
                 style={{ display: "none" }}
-                checked={isChecked}
-                onChange={handleChange}
+                checked={isFavChecked}
+                onChange={handleFavChange}
                 aria-label="Favorite"
               />
               <Icon

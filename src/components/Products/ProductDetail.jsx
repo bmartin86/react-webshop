@@ -124,6 +124,7 @@ function ProductDetail() {
                   <label
                     key={productSize.productSizeQuantityId}
                     className="size-radio"
+                    aria-label={`Select size ${productSize.productSize.sizeName}`}
                   >
                     <input
                       type="radio"
@@ -135,8 +136,24 @@ function ProductDetail() {
                       onChange={() =>
                         handleSelectSize(productSize.productSizeQuantityId)
                       }
+                      style={{ display: "none" }}
+                      aria-hidden="true"
                     />
-                    {productSize.productSize.sizeName}
+                    <div
+                      className="size-box"
+                      style={{
+                        backgroundColor:
+                          selectedSizeId === productSize.productSizeQuantityId
+                            ? "black"
+                            : "var(--main-background-color)",
+                        color:
+                          selectedSizeId === productSize.productSizeQuantityId
+                            ? "white"
+                            : "black",
+                      }}
+                    >
+                      {productSize.productSize.sizeName}
+                    </div>
                   </label>
                 ))}
             </div>
