@@ -123,6 +123,14 @@
   font-weight: 700;
 }
 
+.stickyWrapper {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  overflow-y: auto;
+}
+
 .small-font,
 #sizes {
   font-size: var(--small-font-size);

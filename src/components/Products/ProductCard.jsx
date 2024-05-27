@@ -40,7 +40,7 @@ function ProductCard({ product }) {
                 icon="ph:heart-fill"
                 width="2em"
                 height="2em"
-                style={{ color: isChecked ? "red" : "white" }}
+                style={{ color: isFavChecked ? "red" : "white" }}
                 aria-hidden="true"
               />
             </label>

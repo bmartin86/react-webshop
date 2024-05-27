@@ -116,6 +116,8 @@ function ProductDetail() {
             ) : (
               <p className="price">{product.productPrice.toFixed(2)}&euro;</p>
             )}
+          </div>
+          <div className="stickyWrapper">
             <p id="sizes">Sizes</p>
             <div className="sizes-div">
               {product.productSizeQuantities
@@ -170,33 +172,34 @@ function ProductDetail() {
                 <button id="see-cart">See cart</button>
               </Link>
             </div>
-          </div>
-          <div className="description-text-div">
-            <h3>Description & fit</h3>
-            <p className="small-font">
-              {product.gender.genderName}
-              <span>{nbsp}</span>
-              {product.category.categoryName}
-            </p>
-            <p id="description-text">{product.productDescription}</p>
-            <p className="small-font">
-              Article number:121583
-              <span>{product.productId}</span>
-            </p>
-            <ul>
-              <li>
-                <span className="bold">Model size: </span>
-                The model is {height}cm tall and wears a size {size}
-              </li>
-              <li>
-                <span className="bold">Fit: </span>
-                {fit}
-              </li>
-              <li>
-                <span className="bold">Concept: </span>
-                MODERN CLASSIC
-              </li>
-            </ul>
+
+            <div className="description-text-div">
+              <h3>Description & fit</h3>
+              <p className="small-font">
+                {product.gender.genderName}
+                <span>{nbsp}</span>
+                {product.category.categoryName}
+              </p>
+              <p id="description-text">{product.productDescription}</p>
+              <p className="small-font">
+                Article number:121583
+                <span>{product.productId}</span>
+              </p>
+              <ul>
+                <li>
+                  <span className="bold">Model size: </span>
+                  The model is {height}cm tall and wears a size {size}
+                </li>
+                <li>
+                  <span className="bold">Fit: </span>
+                  {fit}
+                </li>
+                <li>
+                  <span className="bold">Concept: </span>
+                  MODERN CLASSIC
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
