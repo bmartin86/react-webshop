@@ -40,12 +40,6 @@
   padding-top: 0.6em;
 }
 
-/* .discountedPrice,
-.price,
-.old-price {
-  font-size: 1.3em;
-} */
-
 .old-price {
   text-decoration: line-through;
   color: black;

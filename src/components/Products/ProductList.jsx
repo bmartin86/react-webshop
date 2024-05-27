@@ -8,7 +8,6 @@ import "./styles/Products.css";
 function ProductList() {
   const [showDropdown, setShowDropdown] = useState(false);
   const {
-    products,
     loading,
     error,
     fetchCategoriesApi,

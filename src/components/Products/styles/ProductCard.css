@@ -6,7 +6,7 @@
 }
 
 .product-card {
-  gap: .8em;
+  gap: 0.8em;
 }
 
 .product-image {
@@ -26,7 +26,8 @@
 }
 
 .product-name,
-.product-price {
+.product-price,
+.productPrice {
   font-size: 13px;
 }
 
@@ -35,7 +36,7 @@
 }
 
 .product-name {
-  letter-spacing: .01em;
+  letter-spacing: 0.01em;
   display: inline;
 }
 
@@ -46,7 +47,7 @@
 }
 
 .product-price {
-  letter-spacing: .04em;
+  letter-spacing: 0.04em;
 }
 
 /* heart checkbox */
@@ -75,7 +76,7 @@
   -webkit-appearance: none;
 }
 
-.heart-container input[type="checkbox"]::before {
+/* .heart-container input[type="checkbox"]::before {
   position: absolute;
   content: "";
   background-color: white;
@@ -95,16 +96,12 @@
   border-radius: 75px 75px 0 0;
   top: 20%;
   right: 77%;
-}
+} */
 
-.heart-container input[type="checkbox"]:checked,
-.heart-container input:checked[type="checkbox"]::before,
-.heart-container input:checked[type="checkbox"]::after {
+/* .heart-container input[type="checkbox"]:checked {
   background-color: #fe0f42;
 }
 
-.heart-container input[type="checkbox"]:hover,
-.heart-container input:hover[type="checkbox"]::before,
-.heart-container input:hover[type="checkbox"]::after {
+.heart-container input[type="checkbox"]:hover {
   cursor: pointer;
-}
+} */

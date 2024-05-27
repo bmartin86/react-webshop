@@ -109,10 +109,12 @@ function ProductDetail() {
                 )}
                 &euro;
                 <span>{nbsp}</span>
-                <span className="old-price">{product.productPrice}&euro;</span>
+                <span className="old-price">
+                  {product.productPrice.toFixed(2)}&euro;
+                </span>
               </p>
             ) : (
-              <p className="price">{product.productPrice}&euro;</p>
+              <p className="price">{product.productPrice.toFixed(2)}&euro;</p>
             )}
             <p id="sizes">Sizes</p>
             <div className="sizes-div">

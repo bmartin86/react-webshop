@@ -1,8 +1,19 @@
-import { React } from "react";
+import { React, useState } from "react";
+import { useCartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
+import { Icon } from "@iconify/react/dist/iconify.js";
 import "./styles/ProductCard.css";
 
 function ProductCard({ product }) {
+  const { calculateDiscountedPrice } = useCartContext();
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleChange = () => {
+    setIsChecked(!isChecked);
+    // TODO add function to handle favorite
+    // handleFavorite(product.productId);
+  };
+  let nbsp = "\u00A0";
   return (
     <>
       <div className="product-card" key={product.productId}>
@@ -17,17 +28,46 @@ function ProductCard({ product }) {
             />
           </Link>
           <div className="heart-container">
-            {/* Replace with heart icon/button */}
-            <button onClick={() => handleFavorite(product.productId)}>
-              Fav-icon
-            </button>
+            <label style={{ cursor: "pointer" }}>
+              <input
+                type="checkbox"
+                style={{ display: "none" }}
+                checked={isChecked}
+                onChange={handleChange}
+                aria-label="Favorite"
+              />
+              <Icon
+                icon="ph:heart-fill"
+                width="2em"
+                height="2em"
+                style={{ color: isChecked ? "red" : "white" }}
+                aria-hidden="true"
+              />
+            </label>
           </div>
         </div>
         <div className="product-description">
           <Link to={`/products/${product.productId}`} className="product-name">
             {product.productName}
           </Link>
-          <div className="product-price">{product.productPrice} &euro;</div>
+          {product.discountPercentage ? (
+            <p className="productPrice discountedPrice">
+              {calculateDiscountedPrice(
+                product.productPrice,
+                product.discountPercentage
+              )}
+              &euro;
+              <span>{nbsp}</span>
+              <span className="productPrice old-price">
+                {product.productPrice.toFixed(2)}&euro;
+              </span>
+            </p>
+          ) : (
+            <p className="productPrice">
+              {product.productPrice.toFixed(2)}&euro;
+            </p>
+          )}
+          {/* <div className="product-price">{product.productPrice} &euro;</div> */}
           {product.category && (
             <div className="product-category">
               {product.category.categoryName}
