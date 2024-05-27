@@ -1,8 +1,10 @@
 # MARTIN BOLANČA
 
-# TROKUT NEET ACADEMY 4.0 WEBSHOP PROJECT frontend
+# TROKUT NEET ACADEMY 4.0
 
-# URL to WEBSHOP PROJECT express.js BACKEND:
+# webshop project frontend
+
+# URL to webshop project express.js backend:
 
 ```
 https://github.com/Trokut-Neet-Akademija-4-0/node-exercise-1-bmartin86
