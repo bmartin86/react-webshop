@@ -2,17 +2,21 @@ import { useCartContext } from "../../context/CartContext";
 import React, { useEffect, useState, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
+import SuccessPopup from "../SuccessPopup";
 import "./styles/ProductDetail.css";
 
 function ProductDetail() {
+  const { addOneToCart, getProductQuantity, calculateDiscountedPrice } =
+    useCartContext();
+
   const { id: productId } = useParams();
   const [product, setProduct] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedSizeId, setSelectedSizeId] = useState(null);
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const [addedProduct, setAddedProduct] = useState(null);
 
-  const { addOneToCart, getProductQuantity, calculateDiscountedPrice } =
-    useCartContext();
   const productQuantity = getProductQuantity(selectedSizeId);
 
   useEffect(() => {
@@ -57,6 +61,14 @@ function ProductDetail() {
         (size) => size.productSizeQuantityId === selectedSizeId
       );
       addOneToCart(selectedProductSize, product);
+      // Show the popup with the added product
+      setAddedProduct(product);
+      setIsPopupVisible(true);
+
+      // Hide the popup after 3 seconds
+      setTimeout(() => {
+        setIsPopupVisible(false);
+      }, 3000);
     } else {
       alert("Please select a size first.");
     }
@@ -87,6 +99,9 @@ function ProductDetail() {
 
   return (
     <main>
+      {isPopupVisible && (
+        <SuccessPopup product={addedProduct} cartProductId={selectedSizeId} />
+      )}
       <div className="main-product-wrapper">
         {product.images && product.images.length > 0 && (
           <div className="left-div">
