@@ -89,8 +89,8 @@ function ProductDetail() {
     return fits[randomIndex];
   }
 
-  const height = getRandomHeight(168, 192);
-  const sizes = ["S", "M", "L", "XL"];
+  const height = getRandomHeight(168, 185);
+  const sizes = ["S", "M", "L"];
   const size = getRandomSize(sizes);
   const fits = ["Loose Fit", "Slim Fit", "Regular Fit"];
   const fit = getRandomFit(fits);

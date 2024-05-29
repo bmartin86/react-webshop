@@ -7,8 +7,25 @@ import OrderDetails from "../components/OrderDetail";
 
 function Checkout() {
   const { items, getTotalCost, setLoading, setError } = useContext(CartContext);
-
   const [total, setTotal] = useState(null);
+  const initialFormData = {
+    customer: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      address: {
+        streetName: "",
+        houseNumber: "",
+        cityName: "",
+        zipCode: "",
+        deliveryRemark: "",
+      },
+    },
+    products: [],
+    total: 0,
+  };
+  const [formData, setFormData] = useState(initialFormData);
 
   useEffect(() => {
     if (items) {
@@ -19,6 +36,7 @@ function Checkout() {
         // Update formData with the correct total value
         setFormData((prevFormData) => ({
           ...prevFormData,
+          products: items,
           total: cartTotal,
         }));
       } catch (error) {
@@ -38,7 +56,12 @@ function Checkout() {
         <div className="checkout-main-flexbox">
           <div className="checkout-left-section">
             <h3 id="my-info">My information</h3>
-            <CheckoutForm total={total} />
+            <CheckoutForm
+              total={total}
+              formData={formData}
+              setFormData={setFormData}
+              initialFormData={initialFormData}
+            />
             <div className="form-h3">
               <h3>View order details</h3>
               <span>{items.length} items</span>

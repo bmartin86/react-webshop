@@ -5,33 +5,12 @@ import "../styles/Checkout.css";
 import { useNavigate } from "react-router-dom";
 import PurchaseModal from "./PurchaseModal";
 
-function CheckoutForm({ total }) {
-  const { items, setLoading, setError, clearCartProducts } =
-    useContext(CartContext);
-
+function CheckoutForm({ formData, setFormData, initialFormData }) {
+  const { setLoading, setError, clearCartProducts } = useContext(CartContext);
   const [modalVisible, setModalVisible] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
   const navigate = useNavigate();
-
-  console.log("cartItems", items);
-
-  const [formData, setFormData] = useState({
-    customer: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      address: {
-        streetName: "",
-        houseNumber: "",
-        cityName: "",
-        zipCode: "",
-        deliveryRemark: "",
-      },
-    },
-    products: items,
-    total: total,
-  });
+  const [modalData, setModalData] = useState(null);
 
   console.log("form data =>", formData);
 
@@ -76,24 +55,32 @@ function CheckoutForm({ total }) {
       console.log("Response:", response.data);
       if (response.data.isProcessed) {
         setModalMessage("Purchase successful!");
+        setModalData(response.data);
       } else {
         setModalMessage("Purchase failed. Please try again.");
+        setModalData(null);
       }
-      // Clear the cart from local storage and state
+
+      // Set the modal visible and show the message before clearing the cart
+      setModalVisible(true);
+      setLoading(false);
+
+      // Clear the cart from local storage and state after setting the modal visible
       clearCartProducts();
+      setFormData(initialFormData);
     } catch (error) {
       console.error("Error:", error);
       setModalMessage(`Purchase failed: ${error.message}`);
+      setModalData(null);
       setError(error.message);
-    } finally {
-      setModalVisible(true);
       setLoading(false);
+      setModalVisible(true);
     }
   };
 
   const handleModalClose = () => {
     setModalVisible(false);
-    navigate("/"); // Navigate after closing the modal
+    navigate("/");
   };
 
   return (
@@ -104,6 +91,7 @@ function CheckoutForm({ total }) {
             show={modalVisible}
             message={modalMessage}
             onClose={handleModalClose}
+            data={modalData}
           />
           <div className="formInner">
             <div className="flexRow">
